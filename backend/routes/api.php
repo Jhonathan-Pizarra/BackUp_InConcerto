@@ -13,6 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
+//FESTIVAL
+//GET
+Route::get('/festivals', 'FestivalController@index');
+//GET by ID
+Route::get('/festivals/{festival}', 'FestivalController@show');
+//POST
+Route::post('/festivals', 'FestivalController@store');
+//PUT
+Route::put('/festivals/{festival}', 'FestivalController@update');
+//DELETE
+Route::delete('/festivals/{festival}', 'FestivalController@delete');
+
+
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user(); //la flecha es para acceder a la propiedad de algún objeto
 });
+*/
