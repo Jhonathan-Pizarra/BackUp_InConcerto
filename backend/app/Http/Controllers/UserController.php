@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
-use Namshi\JOSE\JWT;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Http\Resources\User as UserResource;
 use Tymon\JWTAuth\JWTGuard;
@@ -27,9 +26,8 @@ class UserController extends Controller
         } catch (JWTException $e) {
             return response()->json(['message' => 'could_not_create_token'], 500);
         }
-        $user = JWTAuth::user();
 
-        return response()->json(compact('token', 'user'));
+        return response()->json(compact('token'));
     }
 
     //Funcion de registro
@@ -53,7 +51,7 @@ class UserController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(new UserResource('user', 'token'), 201);
+        return response()->json(compact('user', 'token'), 201);
     }
 
     public function getAuthenticatedUser()
