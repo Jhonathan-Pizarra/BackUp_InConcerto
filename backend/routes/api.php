@@ -29,6 +29,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //Bandas
         //GET, POST, PUT , DELETE
     //Recursos
+    //GET
+        Route::get('/resources', 'ResourceController@index');
+    //GET by ID
+        Route::get('/resources/{resource}', 'ResourceController@show');
+    //POST
+        Route::post('/resources', 'ResourceController@store');
+    //PUT
+        Route::put('/resources/{resource}', 'ResourceController@update');
+    //DELETE
+        Route::delete('/resources/{resource}', 'ResourceController@delete');
 
     //Etc...
 });
