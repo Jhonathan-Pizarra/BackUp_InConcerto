@@ -19,10 +19,10 @@ class CreateArtistsTable extends Migration
             $table->string('artisticOrGroupName'); //El nombre artisitico puede ser como de un grupo: Guns N Roses o solista como Michael Jackson
             $table->string('name');
             $table->string('lastName');
-            $table->string('nationality'); //Es como un permiso de si o no
+            $table->string('nationality');
             $table->string('mail');
             $table->string('phone');
-            $table->boolean('passage');
+            $table->boolean('passage'); //El pasaje si fue comprado o no por InConcerto
             $table->string('instruments');
             $table->string('emergencyPhone');
             $table->string('emergencyMail');
