@@ -21,6 +21,7 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
 //Route::get('festivals', 'FestivalController@index');
 
+
 //Rutas protegidas o privadas
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
@@ -30,5 +31,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         //GET, POST, PUT , DELETE
     //Recursos
 
-    //Etc...
+    //FESTIVAL
+    //GET
+        Route::get('/concerts', 'ConcertController@index');
+    //GET by ID
+        Route::get('/concerts/{concert}', 'ConcertController@show');
+    //POST
+        Route::post('/concerts', 'ConcertController@store');
+    //PUT
+        Route::put('/concerts/{concert}', 'ConcertController@update');
+    //DELETE
+        Route::delete('/concerts/{concert}', 'ConcertController@delete');
+
 });
