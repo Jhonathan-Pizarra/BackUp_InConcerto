@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //ALIMENTACION
+    //GET
+        Route::get('/feedings', 'FeedingController@index');
+    //GET by ID
+        Route::get('/feedings/{feeding}', 'FeedingController@show');
+    //POST
+        Route::post('/feedings', 'FeedingController@store');
+    //PUT
+        Route::put('/feedings/{feeding}', 'FeedingController@update');
+    //DELETE
+        Route::delete('/feedings/{feeding}', 'FeedingController@delete');
 
     //Etc...
 });
