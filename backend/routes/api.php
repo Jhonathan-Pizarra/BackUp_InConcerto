@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //FESTIVAL
+    //GET
+    Route::get('/lodgings', 'LodgingController@index');
+    //GET by ID
+    Route::get('/lodgings/{lodging}', 'LodgingController@show');
+    //POST
+    Route::post('/lodgings', 'LodgingController@store');
+    //PUT
+    Route::put('/lodgings/{lodging}', 'LodgingController@update');
+    //DELETE
+    Route::delete('/lodgings/{lodging}', 'LodgingController@delete');
 
     //Etc...
 });
