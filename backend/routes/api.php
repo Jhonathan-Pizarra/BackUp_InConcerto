@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //ACTIVIDADES FESTIVAL
+    //GET
+        Route::get('/activityfestivals', 'ActivityFestivalController@index');
+    //GET by ID
+        Route::get('/activityfestivals/{activityfestival}', 'ActivityFestivalController@show');
+    //POST
+        Route::post('/activityfestivals', 'ActivityFestivalController@store');
+    //PUT
+        Route::put('/activityfestivals/{activityfestival}', 'ActivityFestivalController@update');
+    //DELETE
+        Route::delete('/activityfestivals/{activityfestival}', 'ActivityFestivalController@delete');
 
     //Etc...
 });
