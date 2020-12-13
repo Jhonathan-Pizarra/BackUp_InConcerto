@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //FESTIVAL
+    //GET
+    Route::get('/transports', 'TransportController@index');
+    //GET by ID
+    Route::get('/transports/{transport}', 'TransportController@show');
+    //POST
+    Route::post('/transports', 'TransportController@store');
+    //PUT
+    Route::put('/transports/{transport}', 'TransportController@update');
+    //DELETE
+    Route::delete('/transports/{transport}', 'TransportController@delete');
 
     //Etc...
 });
