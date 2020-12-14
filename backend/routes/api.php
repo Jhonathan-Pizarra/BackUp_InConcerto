@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //CALENDARIO
+    //GET
+    Route::get('/calendars', 'CalendarController@index');
+    //GET by ID
+    Route::get('/calendars/{calendar}', 'CalendarController@show');
+    //POST
+    Route::post('/calendars', 'CalendarController@store');
+    //PUT
+    Route::put('/calendars/{calendar}', 'CalendarController@update');
+    //DELETE
+    Route::delete('/calendars/{calendar}', 'CalendarController@delete');
 
     //Etc...
 });
