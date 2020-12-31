@@ -49,4 +49,11 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    //Tiene
+    public function feedings()
+    {
+        return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente
+    }
+
+
 }
