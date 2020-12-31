@@ -18,4 +18,10 @@ class Calendar extends Model
         return $this->belongsTo('App\User');
     }
 
+    //Tiene
+    public function transports()
+    {
+        return $this->hasMany('App\Transport'); //Eloquent determina la FK automáticamente
+    }
+
 }
