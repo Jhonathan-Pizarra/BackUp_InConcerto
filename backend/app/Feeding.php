@@ -8,4 +8,10 @@ class Feeding extends Model
 {
     protected $fillable = ['date', 'food', 'observation', 'quantityLunchs'];
 
+    //Pertenece a
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }
