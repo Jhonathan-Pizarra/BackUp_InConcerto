@@ -15,4 +15,11 @@ class Artist extends Model
         return $this->hasMany('App\Calendar'); //Eloquent determina la FK automáticamente
     }
 
+    //Tiene
+    public function feedings()
+    {
+        return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente
+    }
+
+
 }
