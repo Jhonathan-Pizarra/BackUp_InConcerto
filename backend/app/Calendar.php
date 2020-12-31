@@ -8,7 +8,7 @@ class Calendar extends Model
 {
     protected $fillable = ['checkIn_Artist', 'checkOut_Artist', 'comingFrom', 'flyNumber'];
 
-    public function artists()
+    public function artist()
     {
         return $this->belongsTo('App\Artist');
     }
