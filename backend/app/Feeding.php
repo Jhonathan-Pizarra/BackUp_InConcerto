@@ -14,4 +14,9 @@ class Feeding extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function artist()
+    {
+        return $this->belongsTo('App\Artist');
+    }
+
 }
