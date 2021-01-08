@@ -8,10 +8,12 @@ class Resource extends Model
 {
     protected $fillable = ['name', 'quantity', 'description'];
 
-    //Tiene:
-    public function concert_resources()
-    {
-        return $this->hasMany('App\ConcertResource'); //Eloquent determina la FK automáticamente
-    }
 
+    //Pertenece a:
+    public function concerts()
+    {
+        return $this->belongsToMany('App\Concert')
+            ->withPivot('state')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
+    }
 }
