@@ -8,10 +8,12 @@ class Concert extends Model
 {
     protected $fillable = ['dateConcert', 'name', 'duration', 'free', 'insitu'];
 
-
-    public function concert_resources()
+    //Pertenece a:
+    public function resources()
     {
-        return $this->hasMany('App\ConcertResource'); //Eloquent determina la FK automáticamente
+        return $this->belongsToMany('App\Resource')
+            ->withPivot('state')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 }
 
