@@ -28,7 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //ENSAYO
+    //GET
+    Route::get('/essays', 'EssayController@index');
+    //GET by ID
+    Route::get('/essays/{essay}', 'EssayController@show');
+    //POST
+    Route::post('/essays', 'EssayController@store');
+    //PUT
+    Route::put('/essays/{essay}', 'EssayController@update');
+    //DELETE
+    Route::delete('/essays/{essay}', 'EssayController@delete');
 
     //Etc...
 });
