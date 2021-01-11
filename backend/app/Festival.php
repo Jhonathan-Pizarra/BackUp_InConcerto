@@ -14,4 +14,9 @@ class Festival extends Model
         return $this->hasMany('App\Concert'); //Eloquent determina la FK automáticamente
     }
 
+    //Relacion Festival-Ensayo
+    public function essays()
+    {
+        return $this->hasMany('App\Essay'); //Eloquent determina la FK automáticamente
+    }
 }
