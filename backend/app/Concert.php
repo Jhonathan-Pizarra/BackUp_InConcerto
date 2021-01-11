@@ -14,6 +14,12 @@ class Concert extends Model
         return $this->belongsTo('App\Place');
     }
 
+    //Relación Concierto-Festival
+    public function festival()
+    {
+        return $this->belongsTo('App\Festival');
+    }
+
     //Pertenece a:
     public function resources()
     {
