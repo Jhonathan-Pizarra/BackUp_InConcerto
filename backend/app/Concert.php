@@ -20,11 +20,18 @@ class Concert extends Model
         return $this->belongsTo('App\Festival');
     }
 
-    //Pertenece a:
+    //Relación Concierto-Recurso
     public function resources()
     {
         return $this->belongsToMany('App\Resource')
             ->withPivot('state')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
+    }
+
+    //Relación Concierto-Artista
+    public function artists()
+    {
+        return $this->belongsToMany('App\Artist')
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 }

@@ -33,14 +33,14 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //FESTIVAL
     //GET
-        Route::get('/concerts', 'ConcertController@index');
+    Route::get('/concerts', 'ConcertController@index');
     //GET by ID
-        Route::get('/concerts/{concert}', 'ConcertController@show');
+    Route::get('/concerts/{concert}', 'ConcertController@show');
     //POST
-        Route::post('/concerts', 'ConcertController@store');
+    Route::post('/concerts', 'ConcertController@store');
     //PUT
-        Route::put('/concerts/{concert}', 'ConcertController@update');
+    Route::put('/concerts/{concert}', 'ConcertController@update');
     //DELETE
-        Route::delete('/concerts/{concert}', 'ConcertController@delete');
+    Route::delete('/concerts/{concert}', 'ConcertController@delete');
 
 });
