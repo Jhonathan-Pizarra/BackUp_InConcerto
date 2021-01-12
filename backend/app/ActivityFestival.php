@@ -14,4 +14,9 @@ class ActivityFestival extends Model
         return $this->belongsTo('App\Festival');
     }
 
+    //Relación Admin(Responsable)-Actividad
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
