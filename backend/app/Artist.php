@@ -29,4 +29,12 @@ class Artist extends Model
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 
+    //Relación Hospedaje-artista
+    public function lodgings()
+    {
+        return $this->belongsToMany('App\Lodging')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
+    }
+
+
 }
