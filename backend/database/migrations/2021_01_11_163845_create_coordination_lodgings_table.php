@@ -15,7 +15,7 @@ class CreateCoordinationLodgingsTable extends Migration
     {
         Schema::create('coordination_lodgings', function (Blueprint $table) {
             $table->unsignedBigInteger('lodging_id');
-            $table->foreign('lodgings_id')->references('id')->on('lodgings')->onDelete('restrict');
+            $table->foreign('lodging_id')->references('id')->on('lodgings')->onDelete('restrict');
             $table->unsignedBigInteger('artist_id');
             $table->foreign('artist_id')->references('id')->on('artists')->onDelete('restrict');
             $table->unsignedBigInteger('admins_id');
