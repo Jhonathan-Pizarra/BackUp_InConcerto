@@ -8,17 +8,19 @@ class Calendar extends Model
 {
     protected $fillable = ['checkIn_Artist', 'checkOut_Artist', 'comingFrom', 'flyNumber'];
 
+    //Relación Artistas-Calendario(Itinerario)
     public function artist()
     {
         return $this->belongsTo('App\Artist');
     }
 
-    public function user()
+    //Relación Calendario-Admin(Users)
+    public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\User'); //Eloquent determina la FK automáticamente
     }
 
-    //Tiene
+    //Relación Calendario-Transporte
     public function transports()
     {
         return $this->hasMany('App\Transport'); //Eloquent determina la FK automáticamente
