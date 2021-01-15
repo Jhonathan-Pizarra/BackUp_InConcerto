@@ -16,7 +16,7 @@ class PlacesTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 5; $i++) {
             //Llamamos un método estático:
             Place::create([
                 //Atributos $fillable
