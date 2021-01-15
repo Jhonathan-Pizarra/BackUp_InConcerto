@@ -25,6 +25,8 @@ class ConcertsTableSeeder extends Seeder
                 'duration' => $faker ->time('H:i:s'),
                 'free' => $faker -> boolean,
                 'insitu' => $faker -> boolean,
+                'festival_id' => $faker -> numberBetween(1,3),
+                'place_id' => $faker -> numberBetween(1,5),
 
             ]);
 
