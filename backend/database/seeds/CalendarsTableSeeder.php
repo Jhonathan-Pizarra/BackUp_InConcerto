@@ -24,7 +24,7 @@ class CalendarsTableSeeder extends Seeder
                 'checkOut_Artist' => $faker -> dateTime,
                 'comingFrom' => $faker ->word,
                 'flyNumber' => $faker -> word,
-
+                'artist_id' => $faker -> unique()-> numberBetween(1,10),
             ]);
 
         }
