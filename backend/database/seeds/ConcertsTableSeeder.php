@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Concert;
 //use App\Resource;
+//use App\Artist;
 
 class ConcertsTableSeeder extends Seeder
 {
@@ -42,6 +43,24 @@ class ConcertsTableSeeder extends Seeder
                         Resource::find(6),
                         Resource::find(7)
                     ), $faker->numberBetween(1, 7), false)
+            );
+            */
+
+            /*Un concierto puede tener 1 artista,  2.. o todos los 10
+            $concert->artists()->saveMany(
+                $faker->randomElements(
+                    array(
+                        Artist::find(1),
+                        Artist::find(2),
+                        Artist::find(3),
+                        Artist::find(4),
+                        Artist::find(5),
+                        Artist::find(6),
+                        Artist::find(7),
+                        Artist::find(8),
+                        Artist::find(9)
+                        Artist::find(10)
+                    ), $faker->numberBetween(1, 10), false)
             );
             */
         }
