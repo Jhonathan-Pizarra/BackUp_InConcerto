@@ -16,7 +16,7 @@ class LodgingsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 13; $i++) {
             //Llamamos un método estático:
             Lodging::create([
                 //Atributos $fillable
@@ -26,7 +26,6 @@ class LodgingsTableSeeder extends Seeder
                 'observation' => $faker -> sentence,
                 'checkIn' => $faker -> date('Y-m-d'),
                 'checkOut' => $faker -> date('Y-m-d'),
-
             ]);
 
         }
