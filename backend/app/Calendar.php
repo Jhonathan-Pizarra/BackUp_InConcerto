@@ -15,9 +15,9 @@ class Calendar extends Model
     }
 
     //Relación Calendario-Admin(Users)
-    public function users()
+    public function user()
     {
-        return $this->hasMany('App\User'); //Eloquent determina la FK automáticamente
+        return $this->belongsTo('App\User'); //Eloquent determina la FK automáticamente
     }
 
     //Relación Calendario-Transporte
