@@ -9,9 +9,16 @@ class Calendar extends Model
     protected $fillable = ['checkIn_Artist', 'checkOut_Artist', 'comingFrom', 'flyNumber'];
 
     //Relación Artistas-Calendario(Itinerario)
-    public function artist()
+/*    public function artist()
     {
         return $this->belongsTo('App\Artist');
+    }*/
+
+    //Relacion Itinerarios-Artista
+    public function artists()
+    {
+        return $this->belongsToMany('App\Artist')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 
     //Relación Calendario-Admin(Users)
