@@ -11,10 +11,18 @@ class Artist extends Model
                             'foodGroup','observation'];
 
     //Relacion Itinerarios-Artista
-    public function calendars()
+/*    public function calendars()
     {
         return $this->hasMany('App\Calendar'); //Eloquent determina la FK automáticamente
+    }*/
+
+    //Relacion Itinerarios-Artista
+    public function calendars()
+    {
+        return $this->belongsToMany('App\Calendar')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
+
 
     //Relacion Alimentacion-Artista
     public function feedings()
