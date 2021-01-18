@@ -24,7 +24,7 @@ class ActivityFestivalsTableSeeder extends Seeder
                 'date' => $faker -> date('Y-m-d'),
                 'description' => $faker ->sentence,
                 'observation' => $faker -> sentence,
-
+                'festival_id' => $faker -> numberBetween(1,3)
             ]);
         }
     }
