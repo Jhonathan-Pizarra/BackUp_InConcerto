@@ -21,11 +21,18 @@ class Calendar extends Model
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 
+    //Relacion Itinerarios-Admins(Users)
+    public function users()
+    {
+        return $this->belongsToMany('App\User')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
+    }
+
     //Relación Calendario-Admin(Users)
-    public function user()
+/*    public function user()
     {
         return $this->belongsTo('App\User'); //Eloquent determina la FK automáticamente
-    }
+    }*/
 
     //Relación Calendario-Transporte
     public function transports()
