@@ -18,8 +18,8 @@ class CreateCoordinationLodgingsTable extends Migration
             $table->foreign('lodging_id')->references('id')->on('lodgings')->onDelete('restrict');
             $table->unsignedBigInteger('artist_id');
             $table->foreign('artist_id')->references('id')->on('artists')->onDelete('restrict');
-            $table->unsignedBigInteger('admins_id');
-            $table->foreign('admins_id')->references('id')->on('users')->onDelete('restrict');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
         });
     }
