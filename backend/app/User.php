@@ -49,4 +49,11 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    //Relación Admins-Calendario
+    public function calendars()
+    {
+        return $this->belongsToMany('App\Calendar')
+            ->withTimestamps(); //Eloquent determina la FK automáticamente
+    }
+
 }
