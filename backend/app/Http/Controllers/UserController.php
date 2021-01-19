@@ -15,7 +15,7 @@ use Tymon\JWTAuth\JWTGuard;
 
 class UserController extends Controller
 {
-    //Funcion de autenticacion de usuario con JWT
+    //Funcion de autenticacion(LOGIN) de usuario con JWT
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -50,10 +50,10 @@ class UserController extends Controller
         ]);
 
         $token = JWTAuth::fromUser($user);
-
         return response()->json(compact('user', 'token'), 201);
     }
 
+    //Usuario no autenticado
     public function getAuthenticatedUser()
     {
         try {
@@ -67,7 +67,7 @@ class UserController extends Controller
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['message' => 'token_absent'], $e->getStatusCode());
         }
-        return response()->json(new UserResource($user), 200);
+        return response()->json(compact($user), 200);
     }
 
 }
