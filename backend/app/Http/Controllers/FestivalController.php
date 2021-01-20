@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Festival; //importamos el modelo
+use App\Http\Resources\Festival as FestivalRes;
+use App\Http\Resources\FestivalCollection;
 
 class FestivalController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Festival::all();
+        return new FestivalCollection(Festival::paginate());
+        //return response()->json(new FestivalCollection(Festival::all()),200);
     }
 
+
     public function show(Festival $festival){
-        return $festival;
+        return response()->json(new FestivalRes($festival),200);
     }
 
     public function store(Request $request){
