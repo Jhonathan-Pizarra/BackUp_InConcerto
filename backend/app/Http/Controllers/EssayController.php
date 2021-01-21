@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Essay as EssayRes;
+use App\Http\Resources\EssayCollection;
 
 class EssayController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Essay::all();
+        return new EssayCollection(Essay::paginate());
     }
 
     public function show(Essay $essay){
-        return $essay;
+        return response()->json(new EssayRes($essay),200);
     }
 
     public function store(Request $request){
