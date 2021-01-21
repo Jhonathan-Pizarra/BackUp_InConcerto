@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Concert;
+use App\Http\Resources\Concert as ConcertRes;
+use App\Http\Resources\ConcertCollection;
 
 class ConcertController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Concert::all();
+        return new ConcertCollection(Concert::paginate());
     }
 
     public function show(Concert $concert){
-        return $concert;
+        return response()->json(new ConcertRes($concert),200);
     }
 
     public function store(Request $request){
