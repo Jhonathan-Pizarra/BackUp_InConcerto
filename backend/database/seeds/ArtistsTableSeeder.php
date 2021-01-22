@@ -20,7 +20,7 @@ class ArtistsTableSeeder extends Seeder
             //Llamamos un método estático:
             Artist::create([
                 //Atributos $fillable
-                'ciOrPassport' => $faker ->dateTime, //Genra LoremIpsum para name, de tipo dateTime
+                'ciOrPassport' => $faker ->buildingNumber, //Genra LoremIpsum para name, de tipo dateTime
                 'artisticOrGroupName' => $faker ->name,
                 'name' => $faker ->firstName,
                 'lastName' => $faker ->lastName,

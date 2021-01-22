@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Artist;
+use App\Http\Resources\Artist as ArtistRes;
+use App\Http\Resources\ArtistCollection;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +11,11 @@ class ArtistController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Artist::all();
+        return new ArtistCollection(Artist::paginate());
     }
 
     public function show(Artist $artist){
-        return $artist;
+        return response()->json(new ArtistRes($artist),200);
     }
 
     public function store(Request $request){
