@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\FeedingPlace;
+use App\Http\Resources\FeedingPlace as FPlaceRes;
+use App\Http\Resources\FeedingPlaceCollection;
 
 class FeedingPlaceController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return FeedingPlace::all();
+        return new FeedingPlaceCollection(FeedingPlace::paginate());
     }
 
     public function show(FeedingPlace $feeding_place){
-        return $feeding_place;
+        return response()->json(new FPlaceRes($feeding_place),200);
     }
 
     public function store(Request $request){
