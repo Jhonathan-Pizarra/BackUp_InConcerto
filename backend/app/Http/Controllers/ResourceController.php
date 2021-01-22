@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 use App\Resource;
-
+use App\Http\Resources\Resource as ResourceRes;
+use App\Http\Resources\ResorceCollection;
 use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Resource::all();
+        return new ResorceCollection(Resource::paginate());
     }
 
     public function show(Resource $resource){
-        return $resource;
+        return response()->json(new ResourceRes($resource),200);
     }
 
     public function store(Request $request){
