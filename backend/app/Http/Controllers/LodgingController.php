@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lodging;
+use App\Http\Resources\Lodging as LodgingRes;
+use App\Http\Resources\LodgingCollection;
 
 class LodgingController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Lodging::all();
+        return new LodgingCollection(Lodging::paginate());
     }
 
     public function show(Lodging $lodging){
-        return $lodging;
+        return response()->json(new LodgingRes($lodging),200);
     }
 
     public function store(Request $request){
