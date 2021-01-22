@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Place;
+use App\Http\Resources\Place as PlaceRes;
+use App\Http\Resources\PlaceCollection;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +11,11 @@ class PlaceController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Place::all();
+        return new PlaceCollection(Place::paginate());
     }
 
     public function show(Place $place){
-        return $place;
+        return response()->json(new PlaceRes($place),200);
     }
 
     public function store(Request $request){
