@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Calendar;
+use App\Http\Resources\Calendar as CalendarRes;
+use App\Http\Resources\CalendarCollection;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +11,11 @@ class CalendarController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Calendar::all();
+        return new CalendarCollection(Calendar::paginate());
     }
 
     public function show(Calendar $calendar){
-        return $calendar;
+        return response()->json(new CalendarRes($calendar),200);
     }
 
     public function store(Request $request){
