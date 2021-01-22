@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 use App\Transport;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Transport as TransportRes;
+use App\Http\Resources\TransportCollection;
 
 class TransportController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Transport::all();
+        return new TransportCollection(Transport::paginate());
     }
 
     public function show(Transport $transport){
-        return $transport;
+        return response()->json(new TransportRes($transport),200);
     }
 
     public function store(Request $request){
