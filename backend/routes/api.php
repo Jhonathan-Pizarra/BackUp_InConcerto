@@ -19,7 +19,6 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
 //Route::get('festivals', 'FestivalController@index');
 
-
 //Rutas protegidas o privadas
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
