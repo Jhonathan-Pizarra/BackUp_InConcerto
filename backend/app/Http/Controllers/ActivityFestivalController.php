@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ActivityFestival;
+use App\Http\Resources\ActivityFestival as ActivityRes;
+use App\Http\Resources\ActivityFestivalCollection as ActivityCollection;
 
 class ActivityFestivalController extends Controller
 {
-
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return ActivityFestival::all();
+        return new ActivityCollection(ActivityFestival::paginate());
     }
 
     public function show(ActivityFestival $activityfestival){
-        return $activityfestival;
+        return response()->json(new ActivityRes($activityfestival),200);
     }
 
     public function store(Request $request){
