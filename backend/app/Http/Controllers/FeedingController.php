@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Feeding;
+use App\Http\Resources\Feeding as FeedingRes;
+use App\Http\Resources\FeedingCollection;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +11,11 @@ class FeedingController extends Controller
 {
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return Feeding::all();
+        return new FeedingCollection(Feeding::paginate());
     }
 
     public function show(Feeding $feeding){
-        return $feeding;
+        return response()->json(new FeedingRes($feeding),200);
     }
 
     public function store(Request $request){
