@@ -9,6 +9,11 @@ use App\Http\Resources\ActivityFestivalCollection as ActivityCollection;
 
 class ActivityFestivalController extends Controller
 {
+    private static $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'date' => 'La fecha debe ser en formatao YYYY-MM-DD',
+    ];
+
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         return new ActivityCollection(ActivityFestival::paginate());
@@ -19,11 +24,31 @@ class ActivityFestivalController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date',
+            'description' => 'required|string',
+            'observation' => 'required|string',
+            'festival_id' => 'required|exists:festivals,id',
+            'user_id' => 'required|exists:users,id'
+        ], self::$messages);
+
         $activityfestival = ActivityFestival::create($request ->all());
         return response() -> json($activityfestival, 201); //codigo 201 correspodnde a create
     }
 
     public function update(Request $request, ActivityFestival $activityfestival){
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date',
+            'description' => 'required|string',
+            'observation' => 'required|string',
+            'festival_id' => 'required|exists:festivals,id',
+            'user_id' => 'required|exists:users,id'
+        ], self::$messages);
+
         $activityfestival -> update($request->all());
         return response() -> json($activityfestival, 200); //codigo 200 correspodnde a modificacion exitosa
     }
