@@ -30,15 +30,15 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         //GET, POST, PUT , DELETE
     //Recursos
     //GET
-        Route::get('/resources', 'ResourceController@index');
+    Route::get('/resources', 'ResourceController@index');
     //GET by ID
-        Route::get('/resources/{resource}', 'ResourceController@show');
+    Route::get('/resources/{resource}', 'ResourceController@show');
     //POST
-        Route::post('/resources', 'ResourceController@store');
+    Route::post('/resources', 'ResourceController@store');
     //PUT
-        Route::put('/resources/{resource}', 'ResourceController@update');
+    Route::put('/resources/{resource}', 'ResourceController@update');
     //DELETE
-        Route::delete('/resources/{resource}', 'ResourceController@delete');
+    Route::delete('/resources/{resource}', 'ResourceController@delete');
 
     //Etc...
 });

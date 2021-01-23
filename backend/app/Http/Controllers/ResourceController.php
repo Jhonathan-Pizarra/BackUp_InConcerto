@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
+    private static $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'name.unique' => 'Ya existe uno con ese nombre',
+        'numeric' => 'El campo :attribute debe ser un número'
+    ];
+
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         return new ResorceCollection(Resource::paginate());
@@ -18,11 +24,25 @@ class ResourceController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|unique:resources|max:255',
+            'quantity' => 'required|numeric',
+            'description' => 'required|string',
+        ], self::$messages);
+
         $resource = Resource::create($request ->all());
         return response() -> json($resource, 201); //codigo 201 correspodnde a create
     }
 
     public function update(Request $request, Resource $resource){
+
+        $request->validate([
+            'name' => 'required|string|unique:resources|max:255',
+            'quantity' => 'required|numeric',
+            'description' => 'required|string',
+        ], self::$messages);
+
         $resource -> update($request->all());
         return response() -> json($resource, 200); //codigo 200 correspodnde a modificacion exitosa
     }
