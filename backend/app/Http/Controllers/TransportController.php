@@ -9,6 +9,11 @@ use App\Http\Resources\TransportCollection;
 
 class TransportController extends Controller
 {
+    private static $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'numeric' => 'El campo :attribute no es un número.',
+    ];
+
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         return new TransportCollection(Transport::paginate());
@@ -19,11 +24,33 @@ class TransportController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'type' => 'required|string|max:255',
+            'capacity' => 'required|numeric|integer',
+            'instruments_capacity' => 'required|numeric',
+            'disponibility' => 'required|boolean',
+            'licence_plate' => 'required|string|max:255',
+            'calendar_id' =>'required|exists:calendars,id'
+
+        ], self::$messages);
+
         $transport = Transport::create($request ->all());
         return response() -> json($transport, 201); //codigo 201 correspodnde a create
     }
 
     public function update(Request $request, Transport $transport){
+
+        $request->validate([
+            'type' => 'required|string|max:255',
+            'capacity' => 'required|numeric|integer',
+            'instruments_capacity' => 'required|numeric',
+            'disponibility' => 'required|boolean',
+            'licence_plate' => 'required|string|max:255',
+            'calendar_id' =>'required|exists:calendars,id'
+
+        ], self::$messages);
+
         $transport -> update($request->all());
         return response() -> json($transport, 200); //codigo 200 correspodnde a modificacion exitosa
     }
