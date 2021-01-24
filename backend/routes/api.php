@@ -30,15 +30,15 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         //GET, POST, PUT , DELETE
     //ALIMENTACION
     //GET
-        Route::get('/feedings', 'FeedingController@index');
+    Route::get('/feedings', 'FeedingController@index');
     //GET by ID
-        Route::get('/feedings/{feeding}', 'FeedingController@show');
+    Route::get('/feedings/{feeding}', 'FeedingController@show');
     //POST
-        Route::post('/feedings', 'FeedingController@store');
+    Route::post('/feedings', 'FeedingController@store');
     //PUT
-        Route::put('/feedings/{feeding}', 'FeedingController@update');
+    Route::put('/feedings/{feeding}', 'FeedingController@update');
     //DELETE
-        Route::delete('/feedings/{feeding}', 'FeedingController@delete');
+    Route::delete('/feedings/{feeding}', 'FeedingController@delete');
 
     //Etc...
 });
