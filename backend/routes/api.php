@@ -29,17 +29,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //ACTIVIDADES FESTIVAL: festival/7/activity_festival/8
+    //ACTIVIDADES FESTIVAL
     //GET
-    Route::get('/festivals/{festival}/activityfestivals', 'ActivityFestivalController@index');
+    Route::get('/activityfestivals', 'ActivityFestivalController@index');
     //GET by ID
-    Route::get('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityFestivalController@show');
+    Route::get('/activityfestivals/{activityfestival}', 'ActivityFestivalController@show');
     //POST
-    Route::post('/festivals/{festival}/activityfestivals', 'ActivityFestivalController@store');
+    Route::post('/activityfestivals', 'ActivityFestivalController@store');
     //PUT
-    Route::put('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityFestivalController@update');
+    Route::put('/activityfestivals/{activityfestival}', 'ActivityFestivalController@update');
     //DELETE
-    Route::delete('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityFestivalController@delete');
+    Route::delete('/activityfestivals/{activityfestival}', 'ActivityFestivalController@delete');
 
     //Etc...
 });
