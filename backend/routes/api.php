@@ -28,17 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //ENSAYO
+    //ENSAYO: festivales/2/ensayos/3
     //GET
-    Route::get('/essays', 'EssayController@index');
+    Route::get('/festivals/{festival}/essays', 'EssayFestivalController@index');
     //GET by ID
-    Route::get('/essays/{essay}', 'EssayController@show');
+    Route::get('/festivals/{festival}/essays/{essay}', 'EssayFestivalController@show');
     //POST
-    Route::post('/essays', 'EssayController@store');
+    Route::post('/festivals/{festival}/essays', 'EssayFestivalController@store');
     //PUT
-    Route::put('/essays/{essay}', 'EssayController@update');
+    Route::put('/festivals/{festival}/essays/{essay}', 'EssayFestivalController@update');
     //DELETE
-    Route::delete('/essays/{essay}', 'EssayController@delete');
+    Route::delete('/festivals/{festival}/essays/{essay}', 'EssayFestivalController@delete');
 
     //Etc...
 });

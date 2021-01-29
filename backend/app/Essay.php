@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Essay extends Model
 {
-    protected $fillable = ['dateEssay', 'name', 'place'];
+    protected $fillable = ['dateEssay', 'name', 'place', 'festival_id'];
 
     //Relacion Ensayo-Festival
     public function festival()
