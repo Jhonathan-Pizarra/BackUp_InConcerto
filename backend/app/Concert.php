@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Concert extends Model
 {
-    protected $fillable = ['dateConcert', 'name', 'duration', 'free', 'insitu'];
+    protected $fillable = ['dateConcert', 'name', 'duration', 'free', 'insitu', 'place_id'];
 
     //Relación Concierto-LugarConcierto
     public function place()
