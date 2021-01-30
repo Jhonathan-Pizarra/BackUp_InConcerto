@@ -29,16 +29,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //FESTIVAL
+    //CONCIERTOS: conciertos/3/artistas/5
     //GET
-    Route::get('/artists', 'ArtistController@index');
+    Route::get('/concerts/{concert}/artists', 'ArtistConcertController@index');
     //GET by ID
-    Route::get('/artists/{artist}', 'ArtistController@show');
+    Route::get('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@show');
     //POST
-    Route::post('/artists', 'ArtistController@store');
+    Route::post('/concerts/{concert}/artists', 'ArtistConcertController@store');
     //PUT
-    Route::put('/artists/{artist}', 'ArtistController@update');
+    Route::put('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@update');
     //DELETE
-    Route::delete('/artists/{artist}', 'ArtistController@delete');
+    Route::delete('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@delete');
     //Etc...
 });
