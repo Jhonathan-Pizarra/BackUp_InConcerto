@@ -28,7 +28,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //Recursos
+    //Recursos: conciertos/2/recursos/2
+    Route::get('/concerts/{concert}/resources', 'ConcertController@index');
+    //GET by ID
+    Route::get('/concerts/{concert}/resources/{resource}', 'ConcertController@show');
+    //POST
+    Route::post('/concerts/{concert}/resources', 'ConcertController@store');
+    //PUT
+    Route::put('/resources/{resource}', 'ConcertController@update');
+    //DELETE
+    Route::delete('/concerts/{concert}/resources/{resource}', 'ConcertController@delete');
 
     //Etc...
 });

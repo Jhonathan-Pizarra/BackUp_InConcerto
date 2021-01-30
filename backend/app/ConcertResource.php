@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConcertResource extends Model
 {
-    protected $fillable = ['state'];
+    protected $fillable = ['concert_id', 'resource_id','state'];
 }
