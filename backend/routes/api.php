@@ -28,17 +28,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //ALIMENTACION
+    //ALIMENTACION artistas
     //GET
-    Route::get('/feedings', 'FeedingController@index');
+    Route::get('/artists/{artist}/feedings', 'ArtistFeedingController@index');
     //GET by ID
-    Route::get('/feedings/{feeding}', 'FeedingController@show');
+    Route::get('/artists/{artist}/feedings/{feeding}', 'ArtistFeedingController@show');
     //POST
-    Route::post('/feedings', 'FeedingController@store');
+    Route::post('/artists/{artist}/feedings', 'ArtistFeedingController@store');
     //PUT
-    Route::put('/feedings/{feeding}', 'FeedingController@update');
+    Route::put('/artists/{artist}/feedings/{feeding}', 'ArtistFeedingController@update');
     //DELETE
-    Route::delete('/feedings/{feeding}', 'FeedingController@delete');
+    Route::delete('/artists/{artist}/feedings/{feeding}', 'ArtistFeedingController@delete');
 
     //Etc...
 });
