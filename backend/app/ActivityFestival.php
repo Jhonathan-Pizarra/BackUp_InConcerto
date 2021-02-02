@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityFestival extends Model
 {
-    protected $fillable = ['name', 'date', 'description', 'observation'];
+    protected $fillable = ['name', 'date', 'description', 'observation', 'user_id'];
 
     //Relación Festival-Actividad
     public function festival()
