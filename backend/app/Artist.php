@@ -8,7 +8,7 @@ class Artist extends Model
 {
     protected $fillable = [ 'ciOrPassport', 'artisticOrGroupName', 'name', 'lastName', 'nationality',
                             'mail', 'phone', 'passage','instruments',  'emergencyPhone', 'emergencyMail',
-                            'foodGroup','observation','calendar_id'];
+                            'foodGroup','observation'];
 
     //Relacion Itinerarios-Artista
 /*    public function calendars()
