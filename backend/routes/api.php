@@ -30,15 +30,15 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         //GET, POST, PUT , DELETE
     //FESTIVAL
     //GET
-    Route::get('/transports', 'TransportController@index');
+    Route::get('/calendars/{calendar}/transports', 'TransportController@index');
     //GET by ID
-    Route::get('/transports/{transport}', 'TransportController@show');
+    Route::get('/calendars/{calendar}/transports/{transport}', 'TransportController@show');
     //POST
-    Route::post('/transports', 'TransportController@store');
+    Route::post('/calendars/{calendar}/transports', 'TransportController@store');
     //PUT
-    Route::put('/transports/{transport}', 'TransportController@update');
+    Route::put('/calendars/{calendar}/transports/{transport}', 'TransportController@update');
     //DELETE
-    Route::delete('/transports/{transport}', 'TransportController@delete');
+    Route::delete('/calendars/{calendar}/transports/{transport}', 'TransportController@delete');
 
     //Etc...
 });
