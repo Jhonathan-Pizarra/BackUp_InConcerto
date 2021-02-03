@@ -29,15 +29,15 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //Bandas
         //GET, POST, PUT , DELETE
     //Recursos: conciertos/2/recursos/2
-    Route::get('/concerts/{concert}/resources', 'ConcertController@index');
+    Route::get('/concerts/{concert}/resources', 'ConcertResourceController@index');
     //GET by ID
-    Route::get('/concerts/{concert}/resources/{resource}', 'ConcertController@show');
+    Route::get('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@show');
     //POST
-    Route::post('/concerts/{concert}/resources', 'ConcertController@store');
+    Route::post('/concerts/{concert}/resources', 'ConcertResourceController@store');
     //PUT
-    Route::put('/resources/{resource}', 'ConcertController@update');
+    Route::put('/resources/{resource}', 'ConcertResourceController@update');
     //DELETE
-    Route::delete('/concerts/{concert}/resources/{resource}', 'ConcertController@delete');
+    Route::delete('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@delete');
 
     //Etc...
 });
