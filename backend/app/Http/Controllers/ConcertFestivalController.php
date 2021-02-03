@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Festival;
 use App\Concert;
 use Illuminate\Http\Request;
-use App\Http\Resources\Concert as ConcertRes;
+use App\Http\Resources\Concert as ConcertFestRes;
 use App\Http\Resources\ConcertCollection;
 
 class ConcertFestivalController extends Controller
@@ -14,7 +14,7 @@ class ConcertFestivalController extends Controller
     ];
 
     public function index(Festival $festival){
-        return response()->json(ConcertRes::collection($festival->concerts),200);
+        return response()->json(ConcertFestRes::collection($festival->concerts),200);
     }
 
     public function show(Festival $festival, Concert $concert){
@@ -50,7 +50,8 @@ class ConcertFestivalController extends Controller
             'place_id' => 'required|exists:places,id'
         ], self::$messages);
 
-        $concert = $festival->concerts()-> update($request->all());
+        $concert = $festival->concerts()->where('id', $concert->id)->firstOrFail();
+        $concert -> update($request->all());
         return response() -> json($concert, 200); //codigo 200 correspodnde a modificacion exitosa
     }
 
