@@ -31,14 +31,14 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         //GET, POST, PUT , DELETE
     //FESTIVAL
     //GET
-    Route::get('/artists', 'ArtistController@index');
+    Route::get('/lodgings/{lodging}/artists', 'ArtistLodgingController@index');
     //GET by ID
-    Route::get('/artists/{artist}', 'ArtistController@show');
+    Route::get('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@show');
     //POST
-    Route::post('/artists', 'ArtistController@store');
+    Route::post('/lodgings/{lodging}/artists', 'ArtistLodgingController@store');
     //PUT
-    Route::put('/artists/{artist}', 'ArtistController@update');
+    Route::put('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@update');
     //DELETE
-    Route::delete('/artists/{artist}', 'ArtistController@delete');
+    Route::delete('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@delete');
     //Etc...
 });
