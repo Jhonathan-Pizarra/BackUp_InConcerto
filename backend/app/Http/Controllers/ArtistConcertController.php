@@ -47,8 +47,8 @@ class ArtistConcertController extends Controller
             'observation' => 'required|string',
         ], self::$messages);
 
-        $concert = $concert->artists()->save(new Artist($request->all()));
-        return response()->json($concert, 201);
+        $artist = $concert->artists()->save(new Artist($request->all()));
+        return response()->json($artist, 201);
     }
 
     public function update(Request $request, Concert $concert,  Artist $artist){
