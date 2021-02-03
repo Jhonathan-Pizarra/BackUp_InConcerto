@@ -29,16 +29,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Bandas
         //GET, POST, PUT , DELETE
-    //FESTIVAL
+    //Calendarios: calendarios/5/artistas/2
     //GET
-    Route::get('/artists', 'ArtistController@index');
+    Route::get('/calendars/{calendar}/artists', 'ArtistCalendarController@index');
     //GET by ID
-    Route::get('/artists/{artist}', 'ArtistController@show');
+    Route::get('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@show');
     //POST
-    Route::post('/artists', 'ArtistController@store');
+    Route::post('/calendars/{calendar}/artists', 'ArtistCalendarController@store');
     //PUT
-    Route::put('/artists/{artist}', 'ArtistController@update');
+    Route::put('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@update');
     //DELETE
-    Route::delete('/artists/{artist}', 'ArtistController@delete');
+    Route::delete('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@delete');
     //Etc...
 });
