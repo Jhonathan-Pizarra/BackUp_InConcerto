@@ -26,10 +26,13 @@ class PlaceConcertController extends Controller
     public function store(Request $request, Place $place){
 
         $request->validate([
-            'dateEssay' => 'required|date',
+            'dateConcert' => 'required|date',
             'name' => 'required|string|max:255',
-            'place' => 'required|string|max:255',
-            'festival_id' => 'required|exists:festivals,id', //No disponible hasta que se fusione con la rama de relacion
+            'duration' => 'required|string',
+            'free' => 'required',
+            'insitu' => 'required',
+            'festival_id' => 'required|exists:festivals,id',
+            'place_id' => 'required|exists:places,id'
         ], self::$messages);
 
         $concert = $place->concerts()->save(new Concert($request->all()));
@@ -39,10 +42,13 @@ class PlaceConcertController extends Controller
     public function update(Request $request, Place $place, Concert $concert){
 
         $request->validate([
-            'dateEssay' => 'required|date',
+            'dateConcert' => 'required|date',
             'name' => 'required|string|max:255',
-            'place' => 'required|string|max:255',
-            'festival_id' => 'required|exists:festivals,id', //No disponible hasta que se fusione con la rama de relacion
+            'duration' => 'required|string',
+            'free' => 'required',
+            'insitu' => 'required',
+            'festival_id' => 'required|exists:festivals,id',
+            'place_id' => 'required|exists:places,id'
         ], self::$messages);
 
         $concert = $place->concerts()->where('id', $concert->id)->firstOrFail();
