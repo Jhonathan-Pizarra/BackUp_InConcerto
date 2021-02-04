@@ -14,7 +14,6 @@ class FestivalController extends Controller
         'description.required' => 'Es necesaria una descripción'
     ];
 
-
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         return new FestivalCollection(Festival::paginate());
@@ -30,10 +29,19 @@ class FestivalController extends Controller
         $request->validate([
             'name' => 'required|string|unique:festivals|max:255', //unique:tabla
             'description' => 'required|string',
+            'image' => 'required|image|dimensions:min_width=200,min_height=200',
         ], self::$messages);
 
-        $festival = Festival::create($request ->all());
-        return response() -> json($festival, 201); //codigo 201 correspodnde a create
+        //Creamos una instancia y subimso la imagen al servidor
+        $festival = new Festival($request->all());
+        $path = $request->image->store('public/festivals');
+        //Al campo image le setea una ruta y le guardamos en la bdd
+        $festival->image = $path;
+        $festival->save();
+
+        return response()->json(new FestivalRes($festival), 201);
+        //$festival = Festival::create($request ->all());
+        //return response() -> json($festival, 201); //codigo 201 correspodnde a create
     }
 
     public function update(Request $request, Festival $festival){

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Festival extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description','image'];
 
     //Relacion Festival-Concierto
     public function concerts()
