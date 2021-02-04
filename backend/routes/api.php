@@ -17,8 +17,7 @@ use Illuminate\Http\Request;
 //Rutas públicas
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
-Route::get('festivals', 'FestivalController@index');
-Route::post('festivals', 'FestivalController@store');
+//Route::get('festivals', 'FestivalController@index');
 
 //Rutas protegidas o privadas
 Route::group(['middleware' => ['jwt.verify']], function () {
@@ -27,10 +26,11 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //FESTIVAL
     //GET
-    //Route::get('/festivals', 'FestivalController@index');
+    Route::get('/festivals', 'FestivalController@index');
     //GET by ID
     Route::get('/festivals/{festival}', 'FestivalController@show');
     //POST
+    Route::post('/festivals', 'FestivalController@store');
     //PUT
     Route::put('/festivals/{festival}', 'FestivalController@update');
     //DELETE
