@@ -19,10 +19,15 @@ class ConcertController extends Controller
     }
 
     public function show(Concert $concert){
+        //Tiene permiso:
+        $this->authorize('view', $concert);
+
         return response()->json(new ConcertRes($concert),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Concert::class);
 
         $request->validate([
             'dateConcert' => 'required|date',
@@ -39,6 +44,8 @@ class ConcertController extends Controller
     }
 
     public function update(Request $request, Concert $concert){
+        //Tiene permiso:
+        $this->authorize('update', $concert);
 
         $request->validate([
             'dateConcert' => 'required|date',
@@ -55,6 +62,9 @@ class ConcertController extends Controller
     }
 
     public function delete(Request $request, Concert $concert){
+        //Tiene permiso:
+        $this->authorize('delete', $concert);
+
         $concert -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
