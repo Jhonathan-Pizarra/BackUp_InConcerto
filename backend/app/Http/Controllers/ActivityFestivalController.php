@@ -20,10 +20,15 @@ class ActivityFestivalController extends Controller
     }
 
     public function show(ActivityFestival $activityfestival){
+        //Tiene permiso:
+        $this->authorize('view', $activityfestival);
+
         return response()->json(new ActivityRes($activityfestival),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', ActivityFestival::class);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -39,6 +44,8 @@ class ActivityFestivalController extends Controller
     }
 
     public function update(Request $request, ActivityFestival $activityfestival){
+        //Tiene permiso:
+        $this->authorize('update', $activityfestival);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -54,6 +61,9 @@ class ActivityFestivalController extends Controller
     }
 
     public function delete(Request $request, ActivityFestival $activityfestival){
+        //Tiene permiso:
+        $this->authorize('delete', $activityfestival);
+
         $activityfestival -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
