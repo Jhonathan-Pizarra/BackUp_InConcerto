@@ -21,10 +21,14 @@ class FeedingController extends Controller
     }
 
     public function show(Feeding $feeding){
+        //Tiene permiso:
+        $this->authorize('view', $feeding);
         return response()->json(new FeedingRes($feeding),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Feeding::class);
 
         $request->validate([
             'date' => 'required|date|max:255',
@@ -42,6 +46,8 @@ class FeedingController extends Controller
     }
 
     public function update(Request $request, Feeding $feeding){
+        //Tiene permiso:
+        $this->authorize('update', $feeding);
 
         $request->validate([
             'date' => 'required|date|max:255',
@@ -59,6 +65,9 @@ class FeedingController extends Controller
     }
 
     public function delete(Request $request, Feeding $feeding){
+        //Tiene permiso:
+        $this->authorize('delete', $feeding);
+
         $feeding -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
