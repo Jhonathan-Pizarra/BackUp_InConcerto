@@ -21,10 +21,14 @@ class PlaceController extends Controller
     }
 
     public function show(Place $place){
+        //Tiene permiso:
+        $this->authorize('view', $place);
         return response()->json(new PlaceRes($place),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Place::class);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -39,6 +43,8 @@ class PlaceController extends Controller
     }
 
     public function update(Request $request, Place $place){
+        //Tiene permiso:
+        $this->authorize('update', $place);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -53,6 +59,9 @@ class PlaceController extends Controller
     }
 
     public function delete(Request $request, Place $place){
+        //Tiene permiso:
+        $this->authorize('delete', $place);
+
         $place -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
