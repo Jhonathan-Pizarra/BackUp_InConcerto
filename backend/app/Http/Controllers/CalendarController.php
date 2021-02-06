@@ -20,10 +20,15 @@ class CalendarController extends Controller
     }
 
     public function show(Calendar $calendar){
+        //Tiene permiso:
+        $this->authorize('view', $calendar);
+
         return response()->json(new CalendarRes($calendar),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Calendar::class);
 
         $request->validate([
             'checkIn_Artist' => 'required|date',
@@ -38,6 +43,8 @@ class CalendarController extends Controller
     }
 
     public function update(Request $request, Calendar $calendar){
+        //Tiene permiso:
+        $this->authorize('update', $calendar);
 
         $request->validate([
             'checkIn_Artist' => 'required|date',
@@ -52,6 +59,9 @@ class CalendarController extends Controller
     }
 
     public function delete(Request $request, Calendar $calendar){
+        //Tiene permiso:
+        $this->authorize('delete', $calendar);
+
         $calendar -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
