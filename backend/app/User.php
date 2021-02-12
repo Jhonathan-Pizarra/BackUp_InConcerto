@@ -49,4 +49,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    //Relación Polimórfica:
+    public function userable()
+    {
+        return $this->morphTo();
+    }
+
 }

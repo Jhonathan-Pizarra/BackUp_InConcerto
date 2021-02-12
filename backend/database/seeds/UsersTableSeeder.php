@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use App\Admin;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,11 +21,13 @@ class UsersTableSeeder extends Seeder
         // Crear la misma clave para todos los usuarios
         // conviene hacerlo antes del for para que el seeder
         // no se vuelva lento.
-        $password = Hash::make('123456');
-        User::create([
-            'name' => 'Administrador',
+        $password = Hash::make('123123');
+        $admin = Admin::create();
+        $admin->user()->create([
+            'name' => 'administrador',
             'email' => 'admin@prueba.com',
             'password' => $password,
+            'role' => 'ROLE_ADMIN'
         ]);
 
         // Generar algunos usuarios para nuestra aplicacion
