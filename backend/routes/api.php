@@ -29,6 +29,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+
+    //LUGARES ALIMENTACION
+    //GET
+    Route::get('/feeding_places', 'FeedingPlaceController@index');
+    //GET by ID
+    Route::get('/feeding_places/{feeding_place}', 'FeedingPlaceController@show');
+    //POST
+    Route::post('/feeding_places', 'FeedingPlaceController@store');
+    //PUT
+    Route::put('/feeding_places/{feeding_place}', 'FeedingPlaceController@update');
+    //DELETE
+    Route::delete('/feeding_places/{feeding_place}', 'FeedingPlaceController@delete');
+
     //CALENDARIO
     //GET
     Route::get('/calendars', 'CalendarController@index');
@@ -161,6 +174,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/concerts/{concert}', 'ConcertController@update');
     //DELETE
     Route::delete('/concerts/{concert}', 'ConcertController@delete');
+
 
 
 });
