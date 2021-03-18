@@ -29,6 +29,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+
+    //ALIMENTACION
+    //GET
+    Route::get('/feedings', 'FeedingController@index');
+    //GET by ID
+    Route::get('/feedings/{feeding}', 'FeedingController@show');
+    //POST
+    Route::post('/feedings', 'FeedingController@store');
+    //PUT
+    Route::put('/feedings/{feeding}', 'FeedingController@update');
+    //DELETE
+    Route::delete('/feedings/{feeding}', 'FeedingController@delete');
+
     //TRANSPORT
     //GET
     Route::get('/transports', 'TransportController@index');
