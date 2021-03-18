@@ -29,6 +29,18 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+    //CALENDARIO
+    //GET
+    Route::get('/calendars', 'CalendarController@index');
+    //GET by ID
+    Route::get('/calendars/{calendar}', 'CalendarController@show');
+    //POST
+    Route::post('/calendars', 'CalendarController@store');
+    //PUT
+    Route::put('/calendars/{calendar}', 'CalendarController@update');
+    //DELETE
+    Route::delete('/calendars/{calendar}', 'CalendarController@delete');
+
 
     //ALIMENTACION
     //GET
