@@ -29,6 +29,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+    //HOSPEDAJE
+    //GET
+    Route::get('/lodgings', 'LodgingController@index');
+    //GET by ID
+    Route::get('/lodgings/{lodging}', 'LodgingController@show');
+    //POST
+    Route::post('/lodgings', 'LodgingController@store');
+    //PUT
+    Route::put('/lodgings/{lodging}', 'LodgingController@update');
+    //DELETE
+    Route::delete('/lodgings/{lodging}', 'LodgingController@delete');
 
     //ACTIVIDADES FESTIVAL
     //GET
