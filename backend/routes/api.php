@@ -30,6 +30,18 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('logout', 'UserController@logout');
 
 
+    //ACTIVIDADES FESTIVAL
+    //GET
+    Route::get('/activityfestivals', 'ActivityFestivalController@index');
+    //GET by ID
+    Route::get('/activityfestivals/{activityfestival}', 'ActivityFestivalController@show');
+    //POST
+    Route::post('/activityfestivals', 'ActivityFestivalController@store');
+    //PUT
+    Route::put('/activityfestivals/{activityfestival}', 'ActivityFestivalController@update');
+    //DELETE
+    Route::delete('/activityfestivals/{activityfestival}', 'ActivityFestivalController@delete');
+
     //PLACECONCERT
     //GET
     Route::get('/places', 'PlaceController@index');
