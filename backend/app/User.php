@@ -49,10 +49,18 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+
+    //Relación Admins-Calendario
+    public function calendars()
+    {
+        return $this->belongsToMany('App\Calendar');//Eloquent determina la FK automáticamente
+    } 
+
     //Relación AdcitivadesFestival-Responsables(Users)
     public function activities()
     {
         return $this->hasMany('App\ActivityFestival'); //Eloquent determina la FK automáticamente
+
     }
 
 }
