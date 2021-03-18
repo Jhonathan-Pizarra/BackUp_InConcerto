@@ -50,6 +50,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    //Relación Hospedaje-Admins(Users)
+    public function lodgings()
+    {
+        return $this->belongsToMany('App\Lodging'); //Eloquent determina la FK automáticamente
+    }
+
     //Relación Alimentacion-Usuario(Users)
     public function feedings()
     {
