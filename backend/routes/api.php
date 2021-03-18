@@ -29,6 +29,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+
+    //PLACECONCERT
+    //GET
+    Route::get('/places', 'PlaceController@index');
+    //GET by ID
+    Route::get('/places/{place}', 'PlaceController@show');
+    //POST
+    Route::post('/places', 'PlaceController@store');
+    //PUT
+    Route::put('/places/{place}', 'PlaceController@update');
+    //DELETE
+    Route::delete('/places/{place}', 'PlaceController@delete');
+  
     //ARTISTS
     //GET
     Route::get('/artists', 'ArtistController@index');
@@ -88,7 +101,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/concerts/{concert}', 'ConcertController@update');
     //DELETE
     Route::delete('/concerts/{concert}', 'ConcertController@delete');
-
 
 
 });
