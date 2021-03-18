@@ -50,6 +50,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    //Relación Alimentacion-Usuario(Users)
+    public function feedings()
+    {
+        return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente
+    }
+
     //Relación Admins-Calendario
     public function calendars()
     {
@@ -62,5 +68,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\ActivityFestival'); //Eloquent determina la FK automáticamente
 
     }
+
 
 }
