@@ -24,7 +24,6 @@ class Concert extends Model
     public function resources()
     {
         return $this->belongsToMany('App\Resource')
-            ->withPivot('state')
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 

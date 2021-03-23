@@ -16,7 +16,7 @@ class CalendarsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 8; $i++) {
             //Llamamos un método estático:
             Calendar::create([
                 //Atributos $fillable
@@ -24,7 +24,6 @@ class CalendarsTableSeeder extends Seeder
                 'checkOut_Artist' => $faker -> dateTime,
                 'comingFrom' => $faker ->word,
                 'flyNumber' => $faker -> word,
-               // 'artist_id' => $faker -> unique()-> numberBetween(1,10),
             ]);
 
         }

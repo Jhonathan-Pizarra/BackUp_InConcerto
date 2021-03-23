@@ -16,7 +16,7 @@ class Lodging extends Model
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 
-    //Relación Hospedaje-admins
+    //Relación Hospedaje-admins(Users)
     public function users()
     {
         return $this->belongsToMany('App\User')

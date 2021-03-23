@@ -9,7 +9,7 @@ class FeedingPlace extends Model
     protected $fillable = ['name', 'address', 'permit', 'aforo'];
 
 
-    //Tiene
+    //Relación LugarAlimentacion-Alimetacion
     public function feedings()
     {
         return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente

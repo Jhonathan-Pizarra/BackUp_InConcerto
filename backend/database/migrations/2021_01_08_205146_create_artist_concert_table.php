@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminCalendarsTable extends Migration
+class CreateArtistConcertTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAdminCalendarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_calendars', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
-            $table->unsignedBigInteger('calendar_id');
-            $table->foreign('calendar_id')->references('id')->on('calendars')->onDelete('restrict');
+        Schema::create('artist_concert', function (Blueprint $table) {
+            $table->unsignedBigInteger('artist_id');
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('restrict');
+            $table->unsignedBigInteger('concert_id');
+            $table->foreign('concert_id')->references('id')->on('concerts')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -30,7 +30,7 @@ class CreateAdminCalendarsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('admin_calendars');
+        Schema::dropIfExists('artist_concert');
         Schema::enableForeignKeyConstraints();
     }
 }

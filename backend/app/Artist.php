@@ -10,11 +10,6 @@ class Artist extends Model
                             'mail', 'phone', 'passage','instruments',  'emergencyPhone', 'emergencyMail',
                             'foodGroup','observation'];
 
-    //Relacion Itinerarios-Artista
-/*    public function calendars()
-    {
-        return $this->hasMany('App\Calendar'); //Eloquent determina la FK automáticamente
-    }*/
 
     //Relacion Itinerarios-Artista
     public function calendars()

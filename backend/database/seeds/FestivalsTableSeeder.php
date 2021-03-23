@@ -16,7 +16,7 @@ class FestivalsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 3; $i++) {
+        for ($i=0; $i < 5; $i++) {
             //Llamamos un método estático:
             Festival::create([
                 //Atributos $fillable

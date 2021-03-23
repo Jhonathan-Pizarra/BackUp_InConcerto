@@ -23,7 +23,7 @@ class EssaysTableSeeder extends Seeder
                 'dateEssay' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
                 'place' => $faker -> name,
-                'festival_id' => $faker -> numberBetween(1,3),
+                'festival_id' => $faker -> numberBetween(1, 5),
 
             ]);
 

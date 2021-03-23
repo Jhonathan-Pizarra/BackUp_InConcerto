@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConcertResourcesTable extends Migration
+class CreateConcertResourceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class CreateConcertResourcesTable extends Migration
     public function up()
     {
 
-        Schema::create('concert_resources', function (Blueprint $table) {
+        Schema::create('concert_resource', function (Blueprint $table) {
             $table->unsignedBigInteger('concert_id');
             $table->foreign('concert_id')->references('id')->on('concerts')->onDelete('restrict');
             $table->unsignedBigInteger('resource_id');
             $table->foreign('resource_id')->references('id')->on('resources')->onDelete('restrict');
-            $table->boolean('state');
+            //$table->boolean('state');
             $table->timestamps();
         });
 
@@ -33,7 +33,7 @@ class CreateConcertResourcesTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('concert_resources');
+        Schema::dropIfExists('concert_resource');
         Schema::enableForeignKeyConstraints();
     }
 }
