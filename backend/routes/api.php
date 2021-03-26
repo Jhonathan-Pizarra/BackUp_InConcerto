@@ -175,6 +175,18 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/concerts/{concert}', 'ConcertController@delete');
 
+    //*********************************TEST****************************************  
+    //LUGARCONCIERTO_2
+    //GET
+    Route::get('/places/{place}/concerts', 'PlaceConcertController@index');
+    //GET by ID
+    Route::get('/places/{place}/concerts/{concert}', 'PlaceConcertController@show');
+    //POST
+    Route::post('/places/{place}/concerts', 'PlaceConcertController@store');
+    //PUT
+    Route::put('/places/{place}/concerts/{concert}', 'PlaceConcertController@update');
+    //DELETE
+    Route::delete('/places/{place}/concerts/{concert}', 'PlaceConcertController@delete');
 
 
 });
