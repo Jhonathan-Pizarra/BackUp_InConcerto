@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Concert;
-//use App\Resource;
-//use App\Artist;
+use App\Resource;
+use App\Artist;
 
 class ConcertsTableSeeder extends Seeder
 {
@@ -27,11 +27,12 @@ class ConcertsTableSeeder extends Seeder
                 'duration' => $faker ->time('H:i:s'),
                 'free' => $faker -> boolean,
                 'insitu' => $faker -> boolean,
-                'festival_id' => $faker -> numberBetween(1,3),
+                'festival_id' => $faker -> numberBetween(1,5),
                 'place_id' => $faker -> numberBetween(1,5),
 
             ]);
-            /*Un concierto puede tener 1 recurso, el recurso X,o  2 recursos (X e Y)... o todos los 7
+
+            //Un concierto puede tener 1 recurso, el recurso X,o  2 recursos (X e Y)... o todos los n recursos
             $concert->resources()->saveMany(
                 $faker->randomElements(
                     array(
@@ -44,9 +45,9 @@ class ConcertsTableSeeder extends Seeder
                         Resource::find(7)
                     ), $faker->numberBetween(1, 7), false)
             );
-            */
 
-            /*Un concierto puede tener 1 artista,  2.. o todos los 10
+
+            //Un concierto puede tener 1 artista,  o 2.. o todos los 10
             $concert->artists()->saveMany(
                 $faker->randomElements(
                     array(
@@ -58,11 +59,11 @@ class ConcertsTableSeeder extends Seeder
                         Artist::find(6),
                         Artist::find(7),
                         Artist::find(8),
-                        Artist::find(9)
+                        Artist::find(9),
                         Artist::find(10)
                     ), $faker->numberBetween(1, 10), false)
             );
-            */
+
         }
 
     }

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Concert extends Model
 {
-    protected $fillable = ['dateConcert', 'name', 'duration', 'free', 'insitu', 'festival_id'];
+
+    protected $fillable = ['dateConcert', 'name', 'duration', 'free', 'insitu', 'festival_id', 'place_id'];
+
 
     //Relación Concierto-LugarConcierto
     public function place()
@@ -24,7 +26,6 @@ class Concert extends Model
     public function resources()
     {
         return $this->belongsToMany('App\Resource')
-            ->withPivot('state')
             ->withTimestamps(); //Eloquent determina la FK automáticamente
     }
 
