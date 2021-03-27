@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Feeding extends Model
 {
 
-    protected $fillable = ['date', 'food', 'observation', 'quantityLunchs', 'artist_id', 'user_id'];
+    protected $fillable = ['date', 'food', 'observation', 'quantityLunchs', 'artist_id', 'user_id', 'place_id'];
 
     //Relación Alimentacion-Usuario
     public function user()
