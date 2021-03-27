@@ -139,7 +139,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/resources/{resource}', 'ResourceController@delete');
 
-    //FESTIVAL
+    //FESTIVALES
     //GET
     Route::get('/festivals', 'FestivalController@index');
     //GET by ID
@@ -175,8 +175,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/concerts/{concert}', 'ConcertController@delete');
 
+     
     //*********************************TEST****************************************  
-    //LUGARCONCIERTO_2
+    //CONCIERTO_2
     //GET
     Route::get('/places/{place}/concerts', 'PlaceConcertController@index');
     //GET by ID
@@ -187,6 +188,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/places/{place}/concerts/{concert}', 'PlaceConcertController@update');
     //DELETE
     Route::delete('/places/{place}/concerts/{concert}', 'PlaceConcertController@delete');
+  
+    //CONCIERTO_3
+    //GET
+    Route::get('/festivals/{festival}/concerts', 'ConcertFestivalController@index');
+    //GET by ID
+    Route::get('/festivals/{festival}/concerts/{concert}', 'ConcertFestivalController@show');
+    //POST
+    Route::post('/festivals/{festival}/concerts', 'ConcertFestivalController@store');
+    //PUT
+    Route::put('/festivals/{festival}/concerts/{concert}', 'ConcertFestivalController@update');
+    //DELETE
+    Route::delete('/festivals/{festival}/concerts/{concert}', 'ConcertFestivalController@delete');
+
 
 
 });
