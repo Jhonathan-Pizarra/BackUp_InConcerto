@@ -66,6 +66,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/feedings/{feeding}', 'FeedingController@delete');
 
+  
     //TRANSPORT
     //GET
     Route::get('/transports', 'TransportController@index');
@@ -240,7 +241,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/users/{user}/activityfestivals/{activityfestival}', 'UserActivityController@delete');
   
-    //ALIMENTACION ARTISTA 2
+    //ALIMENTACION_2
     //GET
     Route::get('/artists/{artist}/feedings', 'ArtistFeedingController@index');
     //GET by ID
@@ -251,6 +252,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/artists/{artist}/feedings/{feeding}', 'ArtistFeedingController@update');
     //DELETE
     Route::delete('/artists/{artist}/feedings/{feeding}', 'ArtistFeedingController@delete');
+  
+   //ALIMENTACION_3
+    //GET
+    Route::get('/users/{user}/feedings', 'UserFeedingController@index');
+    //GET by ID
+    Route::get('/users/{user}/feedings/{feeding}', 'UserFeedingController@show');
+    //POST
+    Route::post('/users/{user}/feedings', 'UserFeedingController@store');
+    //PUT
+    Route::put('/users/{user}/feedings/{feeding}', 'UserFeedingController@update');
+    //DELETE
+    Route::delete('/users/{user}/feedings/{feeding}', 'UserFeedingController@delete');
+
 
 });
 
