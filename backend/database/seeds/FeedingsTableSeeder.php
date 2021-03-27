@@ -24,9 +24,9 @@ class FeedingsTableSeeder extends Seeder
                 'food' => $faker -> name,
                 'observation' => $faker ->text,
                 'quantityLunchs' => $faker -> randomDigitNotNull,
-                'user_id' => $faker -> numberBetween(1,3),
-                'artist_id' => $faker -> numberBetween(1,10),
-                'place_id' => $faker -> numberBetween(1,5)
+                'user_id' => $faker -> numberBetween(1, 10),
+                'artist_id' => $faker -> numberBetween(1, 10),
+                'place_id' => $faker -> numberBetween(1, 5)
             ]);
 
         }
