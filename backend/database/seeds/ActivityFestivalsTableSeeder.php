@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Essay;
+use App\ActivityFestival;
 
-class EssaysTableSeeder extends Seeder
+class ActivityFestivalsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,21 +12,21 @@ class EssaysTableSeeder extends Seeder
      */
     public function run()
     {
-        Essay::truncate(); //truncate es un método mágica
+        ActivityFestival::truncate(); //truncate es un método mágica
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 15; $i++) {
+        for ($i=0; $i < 7; $i++) {
             //Llamamos un método estático:
-            Essay::create([
+            ActivityFestival::create([
                 //Atributos $fillable
-                'dateEssay' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
-                'place' => $faker -> name,
+                'date' => $faker -> date('Y-m-d'),
+                'description' => $faker ->sentence,
+                'observation' => $faker -> sentence,
                 'festival_id' => $faker -> numberBetween(1, 5),
-
+                'user_id' => $faker -> numberBetween(1, 7),
             ]);
-
         }
     }
 }

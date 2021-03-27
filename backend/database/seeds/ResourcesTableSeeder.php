@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Essay;
+use App\Resource;
 
-class EssaysTableSeeder extends Seeder
+class ResourcesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,19 +12,17 @@ class EssaysTableSeeder extends Seeder
      */
     public function run()
     {
-        Essay::truncate(); //truncate es un método mágica
+        Resource::truncate(); //truncate es un método mágica
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 15; $i++) {
+        for ($i=0; $i < 7; $i++) {
             //Llamamos un método estático:
-            Essay::create([
+            Resource::create([
                 //Atributos $fillable
-                'dateEssay' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
-                'place' => $faker -> name,
-                'festival_id' => $faker -> numberBetween(1, 5),
-
+                'quantity' => $faker ->randomDigitNotNull, //Numero entero sin digitos
+                'description' => $faker -> text,
             ]);
 
         }
