@@ -226,4 +226,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityController@update');
     //DELETE
     Route::delete('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityController@delete');
+
 });
+
