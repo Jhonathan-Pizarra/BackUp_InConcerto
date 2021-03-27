@@ -215,6 +215,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/festivals/{festival}/essays/{essay}', 'EssayFestivalController@delete');
 
+    //ACTIVIDADES FESTIVAL_2
+    //GET
+    Route::get('/festivals/{festival}/activityfestivals', 'ActivityController@index');
+    //GET by ID
+    Route::get('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityController@show');
+    //POST
+    Route::post('/festivals/{festival}/activityfestivals', 'ActivityController@store');
+    //PUT
+    Route::put('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityController@update');
+    //DELETE
+    Route::delete('/festivals/{festival}/activityfestivals/{activityfestival}', 'ActivityController@delete');
 
 });
 
