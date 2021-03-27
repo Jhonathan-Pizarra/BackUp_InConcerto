@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Essay;
 use App\Festival;
-use App\Http\Resources\Essay as EssayRes;
+use App\Http\Resources\Essay as EssayFesRes;
 use App\Http\Resources\EssayCollection;
 
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class EssayFestivalController extends Controller
     ];
 
     public function index(Festival $festival){
-        return response()->json(EssayRes::collection($festival->essays),200);
+        return response()->json(EssayFesRes::collection($festival->essays),200);
     }
 
     public function show(Festival $festival, Essay $essay){
