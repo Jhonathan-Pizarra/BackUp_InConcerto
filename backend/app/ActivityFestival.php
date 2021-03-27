@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityFestival extends Model
 {
-    protected $fillable = ['name', 'date', 'description', 'observation', 'user_id'];
+    protected $fillable = ['name', 'date', 'description', 'observation', 'festival_id', 'user_id'];
 
-    //Relación Festival-Actividad
+    //Relación Festival-Actividades
     public function festival()
     {
         return $this->belongsTo('App\Festival');
