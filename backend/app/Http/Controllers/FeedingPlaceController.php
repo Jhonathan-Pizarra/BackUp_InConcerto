@@ -21,10 +21,15 @@ class FeedingPlaceController extends Controller
     }
 
     public function show(FeedingPlace $feeding_place){
+        //Tiene permiso:
+        $this->authorize('view', $feeding_place);
+
         return response()->json(new FPlaceRes($feeding_place),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', FeedingPlace::class);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -39,6 +44,8 @@ class FeedingPlaceController extends Controller
     }
 
     public function update(Request $request, FeedingPlace $feeding_place){
+        //Tiene permiso:
+        $this->authorize('update', $feeding_place);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -53,6 +60,9 @@ class FeedingPlaceController extends Controller
     }
 
     public function delete(Request $request, FeedingPlace $feeding_place){
+        //Tiene permiso:
+        $this->authorize('delete', $feeding_place);
+
         $feeding_place -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
