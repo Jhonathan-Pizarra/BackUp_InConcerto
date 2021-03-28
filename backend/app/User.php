@@ -10,7 +10,13 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-
+  
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+  
     //Atributos a llenar
     protected $fillable = [
         'name', 'email', 'password',
@@ -56,6 +62,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+
     //Tiene permiso
     public function isGranted($role)
     {
@@ -78,5 +85,32 @@ class User extends Authenticatable implements JWTSubject
         }
         return false;
     }
+
+
+    //Relación Hospedaje-Admins(Users)
+    public function lodgings()
+    {
+        return $this->belongsToMany('App\Lodging'); //Eloquent determina la FK automáticamente
+    }
+
+    //Relación Alimentacion-Usuario
+    public function feedings()
+    {
+        return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente
+    }
+
+    //Relación Admins-Calendario
+    public function calendars()
+    {
+        return $this->belongsToMany('App\Calendar');//Eloquent determina la FK automáticamente
+    }
+
+    //Relación AdcitivadesFestival-Responsables(Users)
+    public function activities()
+    {
+        return $this->hasMany('App\ActivityFestival'); //Eloquent determina la FK automáticamente
+
+    }
+
 
 }
