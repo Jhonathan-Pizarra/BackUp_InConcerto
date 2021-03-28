@@ -308,7 +308,18 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@update');
     //DELETE
     Route::delete('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@delete');
-    //Etc...
+    
+   //ARTISTS_3
+    //GET
+    Route::get('/calendars/{calendar}/artists', 'ArtistCalendarController@index');
+    //GET by ID
+    Route::get('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@show');
+    //POST
+    Route::post('/calendars/{calendar}/artists', 'ArtistCalendarController@store');
+    //PUT
+    Route::put('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@update');
+    //DELETE
+    Route::delete('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@delete');
 
 
 });
