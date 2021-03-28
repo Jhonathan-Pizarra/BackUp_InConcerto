@@ -101,7 +101,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/activityfestivals/{activityfestival}', 'ActivityFestivalController@delete');
 
-
     //PLACECONCERT
     //GET
     Route::get('/places', 'PlaceController@index');
@@ -113,7 +112,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/places/{place}', 'PlaceController@update');
     //DELETE
     Route::delete('/places/{place}', 'PlaceController@delete');
-
+   
     //ARTISTS
     //GET
     Route::get('/artists', 'ArtistController@index');
@@ -333,7 +332,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/calendars/{calendar}/users/{user}', 'UserCalendarController@delete');
 
-    //Artist lodgign
+    //ARTISTS_4
+    //GET
+    Route::get('/lodgings/{lodging}/artists', 'ArtistLodgingController@index');
+    //GET by ID
+    Route::get('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@show');
+    //POST
+    Route::post('/lodgings/{lodging}/artists', 'ArtistLodgingController@store');
+    //PUT
+    Route::put('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@update');
+    //DELETE
+    Route::delete('/lodgings/{lodging}/artists/{artist}', 'ArtistLodgingController@delete');
 
     //USER_3
     //GET
@@ -346,8 +355,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/lodgings/{lodging}/users/{user}', 'UserLodgingController@update');
     //DELETE
     Route::delete('/lodgings/{lodging}/users/{user}', 'UserLodgingController@delete');
-
-    //Etc...
 
 
 });
