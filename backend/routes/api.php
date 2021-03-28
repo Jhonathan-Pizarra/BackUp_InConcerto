@@ -28,7 +28,6 @@ Route::post('login', 'UserController@authenticate');
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
-
   
     //LUGARES ALIMENTACION
     //GET
@@ -297,6 +296,20 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::put('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@update');
     //DELETE
     Route::delete('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@delete');
+  
+   //ARTISTS_2
+    //GET
+    Route::get('/concerts/{concert}/artists', 'ArtistConcertController@index');
+    //GET by ID
+    Route::get('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@show');
+    //POST
+    Route::post('/concerts/{concert}/artists', 'ArtistConcertController@store');
+    //PUT
+    Route::put('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@update');
+    //DELETE
+    Route::delete('/concerts/{concert}/artists/{artist}', 'ArtistConcertController@delete');
+    //Etc...
+
 
 });
 
