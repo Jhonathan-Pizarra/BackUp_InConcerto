@@ -321,10 +321,21 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/calendars/{calendar}/artists/{artist}', 'ArtistCalendarController@delete');
 
-    //Calendar User...
+    //USER_2
+    //GET
+    Route::get('/calendars/{calendar}/users', 'UserCalendarController@index');
+    //GET by ID
+    Route::get('/calendars/{calendar}/users/{user}', 'UserCalendarController@show');
+    //POST
+    Route::post('/calendars/{calendar}/users', 'UserCalendarController@store');
+    //PUT
+    Route::put('/calendars/{calendar}/users/{user}', 'UserCalendarController@update');
+    //DELETE
+    Route::delete('/calendars/{calendar}/users/{user}', 'UserCalendarController@delete');
+
     //Artist lodgign
 
-    //LODGING USER
+    //USER_3
     //GET
     Route::get('/lodgings/{lodging}/users', 'UserLodgingController@index');
     //GET by ID
