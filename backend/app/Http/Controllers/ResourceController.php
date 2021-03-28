@@ -20,10 +20,13 @@ class ResourceController extends Controller
     }
 
     public function show(Resource $resource){
+        $this->authorize('view', $resource);
         return response()->json(new ResourceRes($resource),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Resource::class);
 
         $request->validate([
             'name' => 'required|string|unique:resources|max:255',
@@ -36,6 +39,8 @@ class ResourceController extends Controller
     }
 
     public function update(Request $request, Resource $resource){
+        //Tiene permiso:
+        $this->authorize('update', $resource);
 
         $request->validate([
             'name' => 'required|string|unique:resources|max:255',
@@ -48,6 +53,9 @@ class ResourceController extends Controller
     }
 
     public function delete(Request $request, Resource $resource){
+        //Tiene permiso:
+        $this->authorize('delete', $resource);
+
         $resource -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }

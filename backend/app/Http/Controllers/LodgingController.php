@@ -20,10 +20,15 @@ class LodgingController extends Controller
     }
 
     public function show(Lodging $lodging){
+        //Tiene permiso:
+        $this->authorize('view', $lodging);
+
         return response()->json(new LodgingRes($lodging),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Lodging::class);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -39,6 +44,8 @@ class LodgingController extends Controller
     }
 
     public function update(Request $request, Lodging $lodging){
+        //Tiene permiso:
+        $this->authorize('update', $lodging);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -54,6 +61,9 @@ class LodgingController extends Controller
     }
 
     public function delete(Request $request, Lodging $lodging){
+        //Tiene permiso:
+        $this->authorize('delete', $lodging);
+
         $lodging -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }

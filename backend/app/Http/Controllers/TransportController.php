@@ -20,10 +20,15 @@ class TransportController extends Controller
     }
 
     public function show(Transport $transport){
+        //Tiene permiso:
+        $this->authorize('view', $transport);
+
         return response()->json(new TransportRes($transport),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Transport::class);
 
         $request->validate([
             'type' => 'required|string|max:255',
@@ -40,6 +45,8 @@ class TransportController extends Controller
     }
 
     public function update(Request $request, Transport $transport){
+        //Tiene permiso:
+        $this->authorize('update', $transport);
 
         $request->validate([
             'type' => 'required|string|max:255',
@@ -56,6 +63,9 @@ class TransportController extends Controller
     }
 
     public function delete(Request $request, Transport $transport){
+        //Tiene permiso:
+        $this->authorize('delete', $transport);
+
         $transport -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
