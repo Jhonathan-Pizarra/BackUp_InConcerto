@@ -24,10 +24,14 @@ class ArtistController extends Controller
     }
 
     public function show(Artist $artist){
+        //Tiene permiso:
+        $this->authorize('view', $artist);
         return response()->json(new ArtistRes($artist),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Artist::class);
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
@@ -50,6 +54,8 @@ class ArtistController extends Controller
     }
 
     public function update(Request $request, Artist $artist){
+        //Tiene permiso:
+        $this->authorize('update', $artist);
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
@@ -72,6 +78,8 @@ class ArtistController extends Controller
     }
 
     public function delete(Request $request, Artist $artist){
+        //Tiene permiso:
+        $this->authorize('delete', $artist);
         $artist -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
