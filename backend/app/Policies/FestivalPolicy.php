@@ -27,25 +27,25 @@ class FestivalPolicy
     //Permiso de ver el detalle
     public function view(User $user, Festival $festival)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
     //Permiso de crear festival
     public function create(User $user)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
     //Permiso de actualizar festival
     public function update(User $user, Festival $festival)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
     //Permiso de borrar
     public function delete(User $user, Festival $festival)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
     //Permiso de restaurar?
