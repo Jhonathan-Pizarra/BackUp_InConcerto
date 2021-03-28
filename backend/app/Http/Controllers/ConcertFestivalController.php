@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Festival;
+use App\Festival;
 use App\Concert;
 use Illuminate\Http\Request;
 use App\Http\Resources\Concert as ConcertFestRes;

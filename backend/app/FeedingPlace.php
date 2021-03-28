@@ -12,7 +12,7 @@ class FeedingPlace extends Model
     //Relación LugarAlimentacion-Alimetacion
     public function feedings()
     {
-        return $this->hasMany('App\Feeding'); //Eloquent determina la FK automáticamente
+        return $this->hasMany('App\Feeding', 'place_id'); //En este caso necesitamos especificarle a cual fk nos referimos
     }
 
 }
