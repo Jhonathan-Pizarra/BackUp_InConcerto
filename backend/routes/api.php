@@ -163,8 +163,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/essays/{essay}', 'EssayController@delete');
 
- 
-
     //CONCIERTO
     //GET
     Route::get('/concerts', 'ConcertController@index');
@@ -288,7 +286,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/calendars/{calendar}/transports/{transport}', 'CalendarTransportController@delete');
 
-    //Etc...
+    //RESOURCES_2
+    //GET
+    Route::get('/concerts/{concert}/resources', 'ConcertResourceController@index');
+    //GET by ID
+    Route::get('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@show');
+    //POST
+    Route::post('/concerts/{concert}/resources', 'ConcertResourceController@store');
+    //PUT
+    Route::put('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@update');
+    //DELETE
+    Route::delete('/concerts/{concert}/resources/{resource}', 'ConcertResourceController@delete');
 
 });
 
