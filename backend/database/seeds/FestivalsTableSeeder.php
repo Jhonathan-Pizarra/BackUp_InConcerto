@@ -15,7 +15,7 @@ class FestivalsTableSeeder extends Seeder
         Festival::truncate();
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
-        $imagen = asset('/storage/festivals/j7SoyVrLv6td10oWUV5oUpUiWo4TwyF7fuKGcT1j.jpg');
+        $imagen = asset('/storage/festivals/carnaval.jpg');
         for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             Festival::create([
