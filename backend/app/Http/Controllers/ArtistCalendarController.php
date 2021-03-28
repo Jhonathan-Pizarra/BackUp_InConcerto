@@ -26,7 +26,7 @@ class ArtistCalendarController extends Controller
     }
 
     public function show(Calendar $calendar, Artist $artist){
-        $artist = $calendar->artists()->where('id', $artist->id)->firstOrFail();
+        $artist = $calendar->artists()->where('artist_id', $artist->id)->firstOrFail();
         return response()->json($artist, 200);
     }
 
