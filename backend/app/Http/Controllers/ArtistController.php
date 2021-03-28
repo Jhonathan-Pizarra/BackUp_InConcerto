@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
-use App\Calendar;
-use App\Http\Resources\Artist as ArtistCalRes;
+use App\Http\Resources\Artist as ArtistRes;
 use App\Http\Resources\ArtistCollection;
-
 use Illuminate\Http\Request;
-
-class ArtistCalendarController extends Controller
+class ArtistController extends Controller
 {
     private static $messages = [
         'required' => 'El campo :attribute es obligatorio.',
@@ -21,16 +18,16 @@ class ArtistCalendarController extends Controller
         'numeric' => 'el campo :attribute debe ser un número'
     ];
 
-    public function index(Calendar $calendar){
-        return response()->json(ArtistCalRes::collection($calendar->artists),200);
+    //Vamos a hacer controladores, tareas que debe realizar
+    public function index(){
+        return new ArtistCollection(Artist::paginate());
     }
 
-    public function show(Calendar $calendar, Artist $artist){
-        $artist = $calendar->artists()->where('artist_id', $artist->id)->firstOrFail();
-        return response()->json($artist, 200);
+    public function show(Artist $artist){
+        return response()->json(new ArtistRes($artist),200);
     }
 
-    public function store(Request $request, Calendar $calendar){
+    public function store(Request $request){
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
@@ -48,11 +45,11 @@ class ArtistCalendarController extends Controller
             'observation' => 'required|string',
         ], self::$messages);
 
-        $artist = $calendar->artists()->save(new Artist($request->all()));
-        return response()->json($artist, 201);
+        $artist = Artist::create($request ->all());
+        return response() -> json($artist, 201); //codigo 201 correspodnde a create
     }
 
-    public function update(Request $request, Calendar $calendar, Artist $artist){
+    public function update(Request $request, Artist $artist){
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
@@ -70,15 +67,13 @@ class ArtistCalendarController extends Controller
             'observation' => 'required|string',
         ], self::$messages);
 
-        $artist = $calendar->artists()->where('id', $artist->id)->firstOrFail();
         $artist -> update($request->all());
         return response() -> json($artist, 200); //codigo 200 correspodnde a modificacion exitosa
     }
 
-    public function delete(Request $request,  Calendar $calendar, Artist $artist){
-    $artist = $calendar->artists()->where('id', $artist->id)->firstOrFail();
-    $artist -> delete();
-    return response() -> json(null, 404); //codigo 204 correspodnde a not found
-}
+    public function delete(Request $request, Artist $artist){
+        $artist -> delete();
+        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+    }
 
 }
