@@ -8,7 +8,7 @@ class Transport extends Model
 {
     protected $fillable = ['type', 'capacity', 'instruments_capacity', 'disponibility', 'licence_plate', 'calendar_id'];
 
-    //Pertenece a:
+    //Relacion Transporte-Calendario
     public function calendar()
     {
         return $this->belongsTo('App\Calendar');

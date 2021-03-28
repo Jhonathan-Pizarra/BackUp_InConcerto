@@ -13,19 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
+
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
 //Rutas públicas
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
 //Route::get('festivals', 'FestivalController@index');
+
 
 //Rutas protegidas o privadas
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
+  
     //LUGARES ALIMENTACION
     //GET
     Route::get('/feeding_places', 'FeedingPlaceController@index');
@@ -285,4 +289,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::delete('/calendars/{calendar}/transports/{transport}', 'CalendarTransportController@delete');
 
     //Etc...
+
 });
+
