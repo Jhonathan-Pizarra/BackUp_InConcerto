@@ -27,25 +27,25 @@ class ArtistPolicy
 //Permiso de ver el detalle
     public function view(User $user, Artist $artist)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de crear
     public function create(User $user)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de actualizar
     public function update(User $user, Artist $artist)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de borrar
     public function delete(User $user, Artist $artist)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de restaurar?

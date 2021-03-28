@@ -27,25 +27,25 @@ class LodgingPolicy
 //Permiso de ver el detalle
     public function view(User $user, Lodging $lodging)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de crear
     public function create(User $user)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de actualizar
     public function update(User $user, Lodging $lodging)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de borrar
     public function delete(User $user, Lodging $lodging)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return $user->isGranted(User::ROLE_USER);
     }
 
 //Permiso de restaurar?
