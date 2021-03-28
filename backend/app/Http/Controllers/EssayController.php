@@ -20,10 +20,13 @@ class EssayController extends Controller
     }
 
     public function show(Essay $essay){
+        $this->authorize('view', $essay);
         return response()->json(new EssayRes($essay),200);
     }
 
     public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Essay::class);
 
         $request->validate([
             'dateEssay' => 'required|date',
@@ -37,6 +40,8 @@ class EssayController extends Controller
     }
 
     public function update(Request $request, Essay $essay){
+        //Tiene permiso:
+        $this->authorize('update', $essay);
 
         $request->validate([
             'dateEssay' => 'required|date',
@@ -50,6 +55,9 @@ class EssayController extends Controller
     }
 
     public function delete(Request $request, Essay $essay){
+        //Tiene permiso:
+        $this->authorize('delete', $essay);
+
         $essay -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
