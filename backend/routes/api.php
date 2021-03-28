@@ -29,7 +29,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::post('logout', 'UserController@logout');
 
-
+  
     //LUGARES ALIMENTACION
     //GET
     Route::get('/feeding_places', 'FeedingPlaceController@index');
@@ -276,7 +276,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/feeding_places/{feeding_place}/feedings/{feeding}', 'FeedsPlaceController@delete');
 
+    //TRANPSORT_2
+    //GET
+    Route::get('/calendars/{calendar}/transports', 'CalendarTransportController@index');
+    //GET by ID
+    Route::get('/calendars/{calendar}/transports/{transport}', 'CalendarTransportController@show');
+    //POST
+    Route::post('/calendars/{calendar}/transports', 'CalendarTransportController@store');
+    //PUT
+    Route::put('/calendars/{calendar}/transports/{transport}', 'CalendarTransportController@update');
+    //DELETE
+    Route::delete('/calendars/{calendar}/transports/{transport}', 'CalendarTransportController@delete');
 
+    //Etc...
 
 });
 
