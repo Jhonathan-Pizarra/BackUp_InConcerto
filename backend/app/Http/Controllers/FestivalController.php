@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewFestival;
+use App\User;
 use Illuminate\Http\Request;
 use App\Festival; //importamos el modelo
 use App\Http\Resources\Festival as FestivalRes;
 use App\Http\Resources\FestivalCollection;
+use Illuminate\Support\Facades\Mail;
 
 class FestivalController extends Controller
 {
@@ -43,9 +46,12 @@ class FestivalController extends Controller
         $festival->image = $path;
         $festival->save();
 
+        $users = User::all();
+        Mail::to($users)->send(new NewFestival($festival));
         return response()->json(new FestivalRes($festival), 201);
         //$festival = Festival::create($request ->all());
         //return response() -> json($festival, 201); //codigo 201 correspodnde a create
+
     }
 
     public function update(Request $request, Festival $festival){
