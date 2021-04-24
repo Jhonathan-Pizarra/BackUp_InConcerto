@@ -32,7 +32,7 @@ class NewFestival extends Mailable
      */
     public function build()
     {
-        //return $this->view('emails.comments.new');
-        return $this->markdown('emails.comments.new');
+        //return $this->view('emails.festivals.new');
+        return $this->markdown('emails.festivals.new');
     }
 }
