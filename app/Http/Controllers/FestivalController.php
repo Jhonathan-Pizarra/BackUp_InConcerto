@@ -19,7 +19,7 @@ class FestivalController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new FestivalCollection(Festival::paginate());
+        return new FestivalCollection(Festival::paginate(16));
         //return response()->json(new FestivalCollection(Festival::all()),200);
     }
 
@@ -34,8 +34,8 @@ class FestivalController extends Controller
         $this->authorize('create', Festival::class);
 
         $request->validate([
-            'name' => 'required|string|unique:festivals|max:70', //unique:tabla
-            'description' => 'required|string|max:115',
+            'name' => 'required|string|unique:festivals|max:255', //unique:tabla
+            'description' => 'required|string|max:255',
             'image' => 'required|image|dimensions:min_width=200,min_height=200',
         ], self::$messages);
 

@@ -15,7 +15,7 @@ class CreateConcertsTable extends Migration
     {
         Schema::create('concerts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('dateConcert');//La hora siempre es la misma, de 10 a 13, la fecha varía
+            $table->date('dateConcert');//La hora siempre es la misma, de 10 a 13, la fecha varía
             $table->string('name');
             $table->time('duration');
             $table->boolean('free');
