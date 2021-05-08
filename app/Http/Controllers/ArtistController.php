@@ -21,7 +21,8 @@ class ArtistController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return response()->json(new ArtistCollection(Artist::all()),200);  //no data + metadata
+        //return response()->json(new ArtistCollection(Artist::paginate()),200); //data + pagination
+        return new ArtistCollection(Artist::paginate()); //data + pagination
     }
 
     public function show(Artist $artist){
