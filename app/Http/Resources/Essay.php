@@ -19,7 +19,7 @@ class Essay extends JsonResource
             'dateEssay' => $this->dateEssay,
             'name' => $this->name,
             'place' => $this->place,
-            'festival' => "/api/festivals/" . $this->festival_id,
+            'festival' => "/festivals/" . $this->festival_id,
         ];
 
     }

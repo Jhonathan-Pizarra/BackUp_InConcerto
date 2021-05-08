@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'authenticate']);
 Route::get('/festivals', [FestivalController::class, 'index']);
-Route::get('/concerts', [ConcertController::class, 'index']);
+//Route::get('/concerts', [ConcertController::class, 'index']);
 
 
 
@@ -73,7 +73,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //CONCIERTO
     //GET
-    //Route::get('/concerts', [ConcertController::class, 'index']);
+    Route::get('/concerts', [ConcertController::class, 'index']);
     //GET by ID
     Route::get('/concerts/{concert}', [ConcertController::class, 'show']);
     //POST
