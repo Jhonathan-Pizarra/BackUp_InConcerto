@@ -20,8 +20,8 @@ class ActivityFestival extends JsonResource
             'date' => $this -> date,
             'description' => $this ->description,
             'observation' => $this -> observation,
-            'festival' => "/api/festivals/" . $this->festival_id,
-            'user' => "/api/users/" . $this->user_id,
+            'festival' => "/festivales/" . $this->festival_id,
+            'user' => "/usuarios/" . $this->user_id,
         ];
     }
 }
