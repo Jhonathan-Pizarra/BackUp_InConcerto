@@ -49,7 +49,7 @@ class FeedingPlaceController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'address' => 'required|string|unique:articles|max:255',
+            'address' => 'required|string|unique:feeding_places|max:255',
             'permit' => 'required|boolean',
             'aforo' => 'required|integer',
 

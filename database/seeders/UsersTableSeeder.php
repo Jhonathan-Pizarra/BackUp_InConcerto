@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         // Crear la misma clave para todos los usuarios
         // conviene hacerlo antes del for para que el seeder
         // no se vuelva lento.
-        $password = Hash::make('123456');
+        $password = Hash::make('123123');
         User::create([
             'name' => 'Administrador',
             'email' => 'admin@mail.com',
