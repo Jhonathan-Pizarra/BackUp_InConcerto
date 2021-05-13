@@ -19,7 +19,7 @@ class FestivalController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new FestivalCollection(Festival::paginate());
+        return new FestivalCollection(Festival::paginate(16));
         //return response()->json(new FestivalCollection(Festival::all()),200);
     }
 
@@ -35,15 +35,19 @@ class FestivalController extends Controller
 
         $request->validate([
             'name' => 'required|string|unique:festivals|max:255', //unique:tabla
-            'description' => 'required|string',
+            'description' => 'required|string|max:255',
             'image' => 'required|image|dimensions:min_width=200,min_height=200',
         ], self::$messages);
 
         //Creamos una instancia y subimso la imagen al servidor
         $festival = new Festival($request->all());
         $path = $request->image->store('public/festivals');
+        //$path = $request->image->store('festivals');
+        //$path = $request->image->store('public/storage/festivals');
+        //$path = $request->image->store('storage/festivals');
         //Al campo image le setea una ruta y le guardamos en la bdd
-        $festival->image = $path;
+        //$festival->image = $path;
+        $festival->image = 'festivals/' . basename($path);
         $festival->save();
 
         $users = User::all();

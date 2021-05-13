@@ -15,7 +15,10 @@ class ConcertController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new ConcertCollection(Concert::paginate());
+        //return response()->json(ConcertRes::collection(Concert::all()),200); //no data
+        //return response()->json(new ConcertCollection(Concert::all()),200);  //no data + metadata
+        //return response()->json(new ConcertCollection(Concert::paginate(10)),200); //data + pagination
+        return new ConcertCollection(Concert::paginate()); //data + pagination
     }
 
     public function show(Concert $concert){

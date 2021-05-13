@@ -25,9 +25,9 @@ class ConcertsTableSeeder extends Seeder
             //Llamamos un método estático:
             $concert = Concert::create([
                 //Atributos $fillable
-                'dateConcert' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
+                'dateConcert' => $faker -> date('Y-m-d'), //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
-                'duration' => $faker ->time('H:i:s'),
+                'duration' => $faker ->time('H:i'),
                 'free' => $faker -> boolean,
                 'insitu' => $faker -> boolean,
                 'festival_id' => $faker -> numberBetween(1,5),

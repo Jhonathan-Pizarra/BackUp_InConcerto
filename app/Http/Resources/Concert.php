@@ -14,6 +14,8 @@ class Concert extends JsonResource
      */
     public function toArray($request)
     {
+
+
         return [
             'id' => $this->id,
             'dateConcert' => $this->dateConcert,
@@ -21,8 +23,10 @@ class Concert extends JsonResource
             'duration' => $this->duration,
             'free' => $this->free,
             'insitu' => $this->insitu,
-            'place' => "/api/places/" . $this->place_id,
-            'festival' => "/api/festivals/" . $this->festival_id,
+            //'place' => "/api/places/" . $this->place_id,
+            //'festival' => "/api/festivals/" . $this->festival_id,
+            'place' => "/lugares/" . $this->place_id,
+            'festival' => "/festivales/" . $this->festival_id,
         ];
     }
 }

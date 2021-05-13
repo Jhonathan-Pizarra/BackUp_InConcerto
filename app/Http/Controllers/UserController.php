@@ -25,21 +25,40 @@ class UserController extends Controller
             return response()->json(['message' => 'could_not_create_token'], 500);
         }
 
-        return response()->json(compact('token'));
+        $user = JWTAuth::user();
+        return response()->json(compact('token','user'))
+            // for httpOnly cookie
+            ->withCookie(
+                'token',
+                $token,
+                //auth()->getToken()->get(),
+                config('jwt.ttl'),
+                '/',
+                null,
+                config('app.env') !== 'local',
+                true, //httpPnly
+                false,
+                config('app.env') !== 'local' ? 'None':'Lax' //SameSite
+            );
     }
 
     //Funcion de registro
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+//        $validator = Validator::make($request->all(),[
+//            'name' => 'required|string|max:255',
+//            'email' => 'required|string|email|max:255|unique:users',
+//            'password' => 'required|string|min:6|confirmed',
+//        ]);
+
+//        if ($validator->fails()){
+//            return response()->json($validator->errors()->toJson(), 400);
+//        }
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
-
-        if ($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
 
         $user = User::create([
             'name' => $request->get('name'),
@@ -48,7 +67,20 @@ class UserController extends Controller
         ]);
 
         $token = JWTAuth::fromUser($user);
-        return response()->json(compact('user', 'token'), 201);
+        return response()->json(compact('user', 'token'), 201)
+            // for httpOnly cookie
+            ->withCookie(
+                'token',
+                $token,
+                //auth()->getToken()->get(),
+                config('jwt.ttl'),
+                '/',
+                null,
+                config('app.env') !== 'local',
+                true, //httpPnly
+                false,
+                config('app.env') !== 'local' ? 'None':'Lax' //SameSite
+            );
     }
 
     //Usuario no autenticado
@@ -66,6 +98,35 @@ class UserController extends Controller
             return response()->json(['message' => 'token_absent'], $e->getStatusCode());
         }
         return response()->json(compact('user'), 200);
+    }
+
+    //Logout
+    public function logout()
+    {
+        try {
+            JWTAuth::invalidate(JWTAuth::getToken());
+
+            return response()->json([
+                "status" => "success",
+                "message" => "User successfully logged out."
+            ], 200)
+                // for httpOnly cookie
+                ->withCookie(
+                    'token',
+                    null, //Eliminar el valor de la cookie
+                    //auth()->getToken()->get(),
+                    config('jwt.ttl'),
+                    '/',
+                    null,
+                    config('app.env') !== 'local',
+                    true, //httpPnly
+                    false,
+                    config('app.env') !== 'local' ? 'None':'Lax' //SameSite
+                );
+        } catch (JWTException $e) {
+            // something went wrong whilst attempting to encode the token
+            return response()->json(["message" => "No se pudo cerrar la sesión."], 500);
+        }
     }
 
 }
