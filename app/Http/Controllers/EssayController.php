@@ -16,7 +16,8 @@ class EssayController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new EssayCollection(Essay::paginate());
+        //return new EssayCollection(Essay::paginate());
+        return response()->json(new EssayCollection(Essay::all()),200);  //no data + metadata
     }
 
     public function show(Essay $essay){
@@ -44,10 +45,10 @@ class EssayController extends Controller
         $this->authorize('update', $essay);
 
         $request->validate([
-            'dateEssay' => 'required|date',
-            'name' => 'required|string|max:255',
-            'place' => 'required|string|max:255',
-            'festival_id' => 'required|exists:festivals,id', //No disponible hasta que se fusione con la rama de relacion
+            'dateEssay' => 'date',
+            'name' => 'string|max:255',
+            'place' => 'string|max:255',
+            'festival_id' => 'exists:festivals,id', //No disponible hasta que se fusione con la rama de relacion
         ], self::$messages);
 
         $essay -> update($request->all());
