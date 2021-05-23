@@ -17,7 +17,8 @@ class ResourceController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new ResorceCollection(Resource::paginate());
+        //return new ResorceCollection(Resource::paginate());
+        return response()->json(new ResorceCollection(Resource::all()),200);  //no data + metadata
     }
 
     public function show(Resource $resource){
@@ -44,9 +45,9 @@ class ResourceController extends Controller
         $this->authorize('update', $resource);
 
         $request->validate([
-            'name' => 'required|string|unique:resources|max:255',
-            'quantity' => 'required|numeric',
-            'description' => 'required|string',
+            'name' => 'string|unique:resources|max:255',
+            'quantity' => 'string',
+            'description' => 'string',
         ], self::$messages);
 
         $resource -> update($request->all());
