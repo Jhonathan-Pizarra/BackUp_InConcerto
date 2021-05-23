@@ -32,8 +32,8 @@ class PlaceController extends Controller
         $this->authorize('create', Place::class);
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|unique:places|max:255',
+            'name' => 'required|string|unique:places|max:255',
+            'address' => 'required|string|max:255',
             'permit' => 'required|boolean',
             'aforo' => 'required|integer',
             'description' => 'required|string|max:255'
@@ -48,11 +48,11 @@ class PlaceController extends Controller
         $this->authorize('update', $place);
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|unique:places|max:255',
-            'permit' => 'required|boolean',
-            'aforo' => 'required|integer',
-            'description' => 'required|string|max:255'
+            'name' => 'string|max:255',
+            'address' => 'string|unique:places|max:255',
+            'permit' => 'boolean',
+            'aforo' => 'integer',
+            'description' => 'string|max:255'
         ], self::$messages);
 
         $place -> update($request->all());
