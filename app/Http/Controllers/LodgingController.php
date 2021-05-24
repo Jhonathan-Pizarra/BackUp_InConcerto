@@ -16,7 +16,8 @@ class LodgingController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new LodgingCollection(Lodging::paginate());
+        //return new LodgingCollection(Lodging::paginate());
+        return response()->json(new LodgingCollection(Lodging::all()),200);  //no data + metadata
     }
 
     public function show(Lodging $lodging){
@@ -48,12 +49,12 @@ class LodgingController extends Controller
         $this->authorize('update', $lodging);
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'observation' => 'required|string',
-            'checkIn' => 'required|date',
-            'checkOut' => 'required|date'
+            'name' => 'string|max:255',
+            'type' => 'string|max:255',
+            'description' => 'string|max:255',
+            'observation' => 'string',
+            'checkIn' => 'date',
+            'checkOut' => 'date'
         ], self::$messages);
 
         $lodging -> update($request->all());
