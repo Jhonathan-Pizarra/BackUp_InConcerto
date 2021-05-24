@@ -48,10 +48,10 @@ class CalendarController extends Controller
         $this->authorize('update', $calendar);
 
         $request->validate([
-            'checkIn_Artist' => 'required|date',
-            'checkOut_Artist' => 'required|date',
-            'comingFrom' => 'required|string|max:255',
-            'flyNumber' => 'required|string'
+            'checkIn_Artist' => 'date',
+            'checkOut_Artist' => 'date',
+            'comingFrom' => 'string|max:255',
+            'flyNumber' => 'string'
 
         ], self::$messages);
 
