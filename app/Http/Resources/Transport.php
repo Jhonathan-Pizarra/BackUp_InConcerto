@@ -21,7 +21,7 @@ class Transport extends JsonResource
             'instruments_capacity' => $this -> instruments_capacity,
             'disponibility' => $this -> disponibility,
             'licence_plate' => $this -> licence_plate,
-            'calendar' => $this -> calendar_id,
+            'calendar' =>  "/calendarios/" . $this -> calendar_id,
         ];
     }
 }
