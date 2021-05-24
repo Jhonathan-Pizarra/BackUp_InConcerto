@@ -18,7 +18,8 @@ class FeedingController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new FeedingCollection(Feeding::paginate());
+        //return new FeedingCollection(Feeding::paginate());
+        return response()->json(new FeedingCollection(Feeding::all()),200);  //no data + metadata
     }
 
     public function show(Feeding $feeding){
@@ -51,13 +52,13 @@ class FeedingController extends Controller
         $this->authorize('update', $feeding);
 
         $request->validate([
-            'date' => 'required|date|max:255',
-            'food' => 'required|string|max:255',
-            'observation' => 'required|string',
-            'quantityLunchs' =>'required|integer',
-            'user_id' => 'required|exists:users,id',
-            'artist_id' => 'required|exists:artists,id',
-            'place_id' => 'required|exists:places,id',
+            'date' => 'date|max:255',
+            'food' => 'string|max:255',
+            'observation' => 'string',
+            'quantityLunchs' =>'integer',
+            'user_id' => 'exists:users,id',
+            'artist_id' => 'exists:artists,id',
+            'place_id' => 'exists:places,id',
 
         ], self::$messages);
 

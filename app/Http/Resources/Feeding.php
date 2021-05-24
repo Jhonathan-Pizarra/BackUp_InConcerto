@@ -20,9 +20,10 @@ class Feeding extends JsonResource
             'food' => $this -> food,
             'observation' => $this ->observation,
             'quantityLunchs' => $this -> quantityLunchs,
-            'user' => $this -> user_id,
-            'artist' => $this -> artist_id,
-            'place' => $this -> place_id,
+            //festival'=>"/festivales/".$this->festival_id,
+            'user' => "/usuarios/".$this -> user_id,
+            'artist' => "/artistas/".$this -> artist_id,
+            'place' => "/lugares-alimentacion/".$this -> place_id,
         ];
 
     }

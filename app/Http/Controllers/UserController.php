@@ -13,6 +13,17 @@ use JWTAuth;
 
 class UserController extends Controller
 {
+    //Función necesaria para obtener users para Feeding...
+    public function index(){
+        return response()->json(UserResource::collection(User::all()),200);//nodata
+    }
+
+    public function show(User$user){
+        //Tienepermiso:
+        //$this->authorize('view',$user);
+        return response()->json(new UserResource($user),200);
+    }
+
     //Funcion de autenticacion(LOGIN) de usuario con JWT
     public function authenticate(Request $request)
     {
