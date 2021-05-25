@@ -16,7 +16,7 @@ class ActivityFestivalController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new ActivityCollection(ActivityFestival::paginate());
+        return response()->json(new ActivityCollection(ActivityFestival::all()),200);  //no data + metadata
     }
 
     public function show(ActivityFestival $activityfestival){
@@ -48,12 +48,12 @@ class ActivityFestivalController extends Controller
         $this->authorize('update', $activityfestival);
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'date' => 'required|date',
-            'description' => 'required|string',
-            'observation' => 'required|string',
-            'festival_id' => 'required|exists:festivals,id',
-            'user_id' => 'required|exists:users,id'
+            'name' => 'string|max:255',
+            'date' => 'date',
+            'description' => 'string',
+            'observation' => 'string',
+            'festival_id' => 'exists:festivals,id',
+            'user_id' => 'exists:users,id'
         ], self::$messages);
 
         $activityfestival -> update($request->all());
