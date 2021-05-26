@@ -25,7 +25,7 @@ class Concert extends JsonResource
             'insitu' => $this->insitu,
             //'place' => "/api/places/" . $this->place_id,
             //'festival' => "/api/festivals/" . $this->festival_id,
-            'place' => "/lugares/" . $this->place_id,
+            'place' => "/lugares-concierto/" . $this->place_id,
             'festival' => "/festivales/" . $this->festival_id,
         ];
     }
