@@ -20,6 +20,8 @@ class Calendar extends JsonResource
             'checkOut_Artist' => $this -> checkOut_Artist,
             'comingFrom' => $this ->comingFrom,
             'flyNumber' => $this -> flyNumber,
+            'artist'=> Artist::collection($this->artists),
+            //'articles' => ArticleResource::collection($this->articles),
         ];
     }
 }
