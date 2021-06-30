@@ -49,12 +49,12 @@ class TransportController extends Controller
         $this->authorize('update', $transport);
 
         $request->validate([
-            'type' => 'required|string|max:255',
-            'capacity' => 'required|numeric|integer',
-            'instruments_capacity' => 'required|numeric',
+            'type' => 'string|max:255',
+            'capacity' => 'numeric|integer',
+            'instruments_capacity' => 'numeric',
             'disponibility' => 'required|boolean',
-            'licence_plate' => 'required|string|max:255',
-            'calendar_id' =>'required|exists:calendars,id'
+            'licence_plate' => 'string|max:255',
+            'calendar_id' =>'exists:calendars,id'
 
         ], self::$messages);
 

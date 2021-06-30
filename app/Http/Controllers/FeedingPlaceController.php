@@ -48,10 +48,10 @@ class FeedingPlaceController extends Controller
         $this->authorize('update', $feeding_place);
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|unique:feeding_places|max:255',
-            'permit' => 'required|boolean',
-            'aforo' => 'required|integer',
+            'name' => 'string|max:255',
+            'address' => 'string|max:255',
+            'permit' => 'boolean',
+            'aforo' => 'integer',
 
         ], self::$messages);
 

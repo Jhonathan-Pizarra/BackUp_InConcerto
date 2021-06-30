@@ -16,9 +16,9 @@ class ConcertController extends Controller
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         //return response()->json(ConcertRes::collection(Concert::all()),200); //no data
-        //return response()->json(new ConcertCollection(Concert::all()),200);  //no data + metadata
+        return response()->json(new ConcertCollection(Concert::all()),200);  //no data + metadata
         //return response()->json(new ConcertCollection(Concert::paginate(10)),200); //data + pagination
-        return new ConcertCollection(Concert::paginate()); //data + pagination
+        //return new ConcertCollection(Concert::paginate()); //data + pagination
     }
 
     public function show(Concert $concert){
@@ -51,13 +51,13 @@ class ConcertController extends Controller
         $this->authorize('update', $concert);
 
         $request->validate([
-            'dateConcert' => 'required|date',
-            'name' => 'required|string|max:255',
-            'duration' => 'required|string',
+            'dateConcert' => 'date',
+            'name' => 'string|max:255',
+            'duration' => 'string',
             'free' => 'required',
             'insitu' => 'required',
-            'festival_id' => 'required|exists:festivals,id',
-            'place_id' => 'required|exists:places,id'
+            'festival_id' => 'exists:festivals,id',
+            'place_id' => 'exists:places,id'
         ], self::$messages);
 
         $concert -> update($request->all());

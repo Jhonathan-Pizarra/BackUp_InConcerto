@@ -22,7 +22,8 @@ class ArtistController extends Controller
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
         //return response()->json(new ArtistCollection(Artist::paginate()),200); //data + pagination
-        return new ArtistCollection(Artist::paginate()); //data + pagination
+        //return new ArtistCollection(Artist::paginate()); //data + pagination
+        return response()->json(new ArtistCollection(Artist::all()),200);  //no data + metadata
     }
 
     public function show(Artist $artist){
@@ -37,13 +38,13 @@ class ArtistController extends Controller
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
-            'artisticOrGroupName' => 'required|string|unique:artists|max:255',
+            'artisticOrGroupName' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'nationality' => 'required|string|max:255',
             'mail' => 'required|string|unique:artists|email|max:255',
             'phone' => 'required|string|max:10',
-            'passage' => 'required|boolean',
+            'passage' => 'required',
             'instruments' => 'required|string',
             'emergencyPhone' => 'required|string|max:25',
             'emergencyMail' => 'required|string|email|max:255',
@@ -60,19 +61,19 @@ class ArtistController extends Controller
         $this->authorize('update', $artist);
 
         $request->validate([
-            'ciOrPassport' => 'required|string|unique:artists|max:15',
-            'artisticOrGroupName' => 'required|string|unique:artists|max:255',
-            'name' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'nationality' => 'required|string|max:255',
-            'mail' => 'required|string|unique:artists|email|max:255',
-            'phone' => 'required|string|max:10',
-            'passage' => 'required|boolean',
-            'instruments' => 'required|string',
-            'emergencyPhone' => 'required|string|max:25',
-            'emergencyMail' => 'required|string|email|max:255',
-            'foodGroup' => 'required|string|max:255',
-            'observation' => 'required|string',
+            'ciOrPassport' => 'string|unique:artists|max:15',
+            'artisticOrGroupName' => 'string|unique:artists|max:255',
+            'name' => 'string|max:255',
+            'lastName' => 'string|max:255',
+            'nationality' => 'string|max:255',
+            'mail' => 'string|unique:artists|email|max:255',
+            'phone' => 'string|max:10',
+            'passage' => 'required',
+            'instruments' => 'string',
+            'emergencyPhone' => 'string|max:25',
+            'emergencyMail' => 'string|email|max:255',
+            'foodGroup' => 'string|max:255',
+            'observation' => 'string',
         ], self::$messages);
 
         $artist -> update($request->all());

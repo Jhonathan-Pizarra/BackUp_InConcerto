@@ -59,6 +59,10 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', [UserController::class, 'getAuthenticatedUser']);
     Route::post('logout', [UserController::class, 'logout']);
 
+    //USERS
+    Route::get('/users',[UserController::class,'index']);
+    Route::get('/users/{user}',[UserController::class,'show']);
+
     //FESTIVALES
     //GET
     //Route::get('/festivals', [FestivalController::class, 'index']);
