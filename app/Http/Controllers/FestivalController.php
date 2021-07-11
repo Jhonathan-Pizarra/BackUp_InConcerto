@@ -19,8 +19,8 @@ class FestivalController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new FestivalCollection(Festival::paginate(16));
-        //return response()->json(new FestivalCollection(Festival::all()),200);
+        //return new FestivalCollection(Festival::paginate(16));
+        return response()->json(new FestivalCollection(Festival::all()),200);
     }
 
     public function show(Festival $festival){

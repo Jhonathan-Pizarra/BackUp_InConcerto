@@ -17,7 +17,8 @@ class FeedingPlaceController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new FeedingPlaceCollection(FeedingPlace::paginate());
+        //return new FeedingPlaceCollection(FeedingPlace::paginate());
+        return response()->json(new FeedingPlaceCollection(FeedingPlace::all()),200);
     }
 
     public function show(FeedingPlace $feeding_place){

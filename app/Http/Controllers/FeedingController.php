@@ -39,7 +39,7 @@ class FeedingController extends Controller
             'quantityLunchs' =>'required|integer',
             'user_id' => 'required|exists:users,id',
             'artist_id' => 'required|exists:artists,id',
-            'place_id' => 'required|exists:places,id',
+            'place_id' => 'required|exists:feeding_places,id',
 
         ], self::$messages);
 
@@ -58,7 +58,7 @@ class FeedingController extends Controller
             'quantityLunchs' =>'integer',
             'user_id' => 'exists:users,id',
             'artist_id' => 'exists:artists,id',
-            'place_id' => 'exists:places,id',
+            'place_id' => 'exists:feeding_places,id',
 
         ], self::$messages);
 

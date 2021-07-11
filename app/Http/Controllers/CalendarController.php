@@ -17,7 +17,8 @@ class CalendarController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new CalendarCollection(Calendar::paginate());
+        //return new CalendarCollection(Calendar::paginate());
+        return response()->json(new CalendarCollection(Calendar::all()),200);
     }
 
     public function show(Calendar $calendar){

@@ -18,7 +18,8 @@ class PlaceController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new PlaceCollection(Place::paginate());
+        //return new PlaceCollection(Place::paginate());
+        return response()->json(new PlaceCollection(Place::all()),200);
     }
 
     public function show(Place $place){
