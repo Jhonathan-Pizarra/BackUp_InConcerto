@@ -12,13 +12,7 @@ use Illuminate\Http\Request;
 class ArtistCalendarController extends Controller
 {
     private static $messages = [
-        'required' => 'El campo :attribute es obligatorio.',
-        'ciOrPassport.unique' => 'CI o Pasaporte ya existe',
-        'max' => 'Número de digitos excedidos',
-        'mail.unique' => ':attribute ya existe',
-        'email' => ':attribute no válido',
-        'boolean' => ':attribute solo puede ser "true" o "false"',
-        'numeric' => 'el campo :attribute debe ser un número'
+        'required' => 'El campo :attribute es obligatorio.'
     ];
 
     public function index(Calendar $calendar){
@@ -75,28 +69,19 @@ class ArtistCalendarController extends Controller
         return response()->json($artist, 201); */
     }
 
+    /*
     public function update(Request $request, Calendar $calendar, Artist $artist){
 
         $request->validate([
-            'ciOrPassport' => 'string|unique:artists|max:15',
-            'artisticOrGroupName' => 'string|unique:artists|max:255',
-            'name' => 'string|max:255',
-            'lastName' => 'string|max:255',
-            'nationality' => 'string|max:255',
-            'mail' => 'string|unique:artists|email|max:255',
-            'phone' => 'string|max:10',
-            'passage' => 'required',
-            'instruments' => 'string',
-            'emergencyPhone' => 'string|max:25',
-            'emergencyMail' => 'string|email|max:255',
-            'foodGroup' => 'string|max:255',
-            'observation' => 'string',
+            'artist_id' => 'exists:artists,id',
+            'calendar_id' => 'exists:calendars,id',
         ], self::$messages);
 
         $artist = $calendar->artists()->where('id', $artist->id)->firstOrFail();
         $artist -> update($request->all());
         return response() -> json($artist, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+    */
 
     public function delete(Request $request,  Calendar $calendar, Artist $artist){
 
