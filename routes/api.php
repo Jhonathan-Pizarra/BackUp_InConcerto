@@ -339,7 +339,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/concerts/{concert}/artists', [ArtistConcertController::class, 'store']);
     //PUT
-    Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
+    //Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
     //DELETE
     Route::delete('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'delete']);
 
@@ -351,7 +351,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'store']);
     //PUT
-    Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
+    //Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
     //DELETE
     Route::delete('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'delete']);
 
