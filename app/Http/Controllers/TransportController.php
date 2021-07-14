@@ -16,7 +16,8 @@ class TransportController extends Controller
 
     //Vamos a hacer controladores, tareas que debe realizar
     public function index(){
-        return new TransportCollection(Transport::paginate());
+        //return new TransportCollection(Transport::paginate());
+        return response()->json(new TransportCollection(Transport::all()),200);
     }
 
     public function show(Transport $transport){
