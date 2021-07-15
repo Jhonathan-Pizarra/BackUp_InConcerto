@@ -375,7 +375,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'store']);
     //PUT
-    Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
+    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
     //DELETE
     Route::delete('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'delete']);
 

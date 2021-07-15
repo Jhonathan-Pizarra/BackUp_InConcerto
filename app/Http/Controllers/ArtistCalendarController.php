@@ -34,7 +34,7 @@ class ArtistCalendarController extends Controller
 
         $calendar = Calendar::findOrFail($request->calendar_id);
         $calendar->artists()->attach($request->artist_id);
-        return response()->json($calendar->artists, 200);
+        return response()->json($calendar->artists, 201);
 
         /*
         //$artistID = Artist::findOrFail($artist->id); //Busco en los artistas el del id ¿Cual...?
