@@ -327,7 +327,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/concerts/{concert}/resources', [ConcertResourceController::class, 'store']);
     //PUT
-    Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
+    //Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
     //DELETE
     Route::delete('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'delete']);
 
