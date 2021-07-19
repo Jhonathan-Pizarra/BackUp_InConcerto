@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Rutas públicas
-Route::post('register', [UserController::class,'register']);
+//Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'authenticate']);
 Route::get('/festivals', [FestivalController::class, 'index']);
 //Route::get('/concerts', [ConcertController::class, 'index']);
@@ -58,8 +58,15 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('logout', [UserController::class, 'logout']);
 
     //USERS
+    //GET
     Route::get('/users',[UserController::class,'index']);
+    //GET by ID
     Route::get('/users/{user}',[UserController::class,'show']);
+    //POST
+    Route::post('register', [UserController::class,'register']);
+    //PUT
+    //DELETE
+
 
     //FESTIVALES
     //GET
