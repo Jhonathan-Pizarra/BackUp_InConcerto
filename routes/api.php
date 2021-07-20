@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Rutas públicas
-Route::post('register', [UserController::class,'register']);
+//Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'authenticate']);
 Route::get('/festivals', [FestivalController::class, 'index']);
 //Route::get('/concerts', [ConcertController::class, 'index']);
@@ -58,8 +58,17 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('logout', [UserController::class, 'logout']);
 
     //USERS
+    //GET
     Route::get('/users',[UserController::class,'index']);
+    //GET by ID
     Route::get('/users/{user}',[UserController::class,'show']);
+    //POST
+    Route::post('register', [UserController::class,'register']);
+    //PUT
+    Route::put('/users/{user}', [UserController::class, 'update']);
+    //DELETE
+    Route::delete('/users/{user}', [UserController::class, 'delete']);
+
 
     //FESTIVALES
     //GET
@@ -327,7 +336,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/concerts/{concert}/resources', [ConcertResourceController::class, 'store']);
     //PUT
-    Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
+    //Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
     //DELETE
     Route::delete('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'delete']);
 
@@ -339,7 +348,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/concerts/{concert}/artists', [ArtistConcertController::class, 'store']);
     //PUT
-    Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
+    //Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
     //DELETE
     Route::delete('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'delete']);
 
@@ -351,7 +360,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'store']);
     //PUT
-    Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
+    //Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
     //DELETE
     Route::delete('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'delete']);
 
@@ -375,7 +384,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'store']);
     //PUT
-    Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
+    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
     //DELETE
     Route::delete('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'delete']);
 

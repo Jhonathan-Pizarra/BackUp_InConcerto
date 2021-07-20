@@ -18,10 +18,32 @@ class UserController extends Controller
         return response()->json(UserResource::collection(User::all()),200);//nodata
     }
 
-    public function show(User$user){
+    public function show(User $user){
         //Tienepermiso:
         //$this->authorize('view',$user);
         return response()->json(new UserResource($user),200);
+    }
+
+    public function update(Request $request, User $user){
+
+        //Tiene permiso:
+        //$this->authorize('update', $user);
+
+        $user -> update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+
+        $token = JWTAuth::fromUser($user);
+        return response()->json(compact('user', 'token'), 201);
+    }
+
+    public function delete(Request $request, User $user){
+        //Tiene permiso:
+        //$this->authorize('delete', $user);
+        $user -> delete();
+        return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
 
     //Funcion de autenticacion(LOGIN) de usuario con JWT

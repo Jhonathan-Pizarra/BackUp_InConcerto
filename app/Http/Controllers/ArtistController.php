@@ -62,7 +62,7 @@ class ArtistController extends Controller
 
         $request->validate([
             'ciOrPassport' => 'string|unique:artists|max:15',
-            'artisticOrGroupName' => 'string|unique:artists|max:255',
+            'artisticOrGroupName' => 'string|max:255',
             'name' => 'string|max:255',
             'lastName' => 'string|max:255',
             'nationality' => 'string|max:255',

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Calendar;
 use App\Http\Resources\User as UserCalRes;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserCollection;
 
 class UserCalendarController extends Controller
 {
@@ -16,26 +17,28 @@ class UserCalendarController extends Controller
     ];
 
     public function index(Calendar $calendar){
-        return response()->json(UserCalRes::collection($calendar->users),200);
+        return response()->json(new UserCollection($calendar->users),200);
     }
 
     public function show(Calendar $calendar, User $user){
-        $user = $calendar->users()->where('id', $user->id)->firstOrFail();
-        return response()->json($user, 200);
+        $calendarUser = $calendar->users()->where('id', $user->id)->firstOrFail();
+        return response()->json($calendarUser, 200);
     }
 
     public function store(Request $request, Calendar $calendar){
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|unique:users|email|max:255',
-            'password' => 'required|string'
+            'user_id' => 'exists:users,id',
+            'calendar_id' => 'exists:calendars,id',
         ], self::$messages);
 
-        $user = $calendar->users()->save(new User($request->all()));
-        return response()->json($user, 201);
+        $calendar = Calendar::findOrFail($request->calendar_id);
+        $calendar->users()->attach($request->user_id);
+        return response()->json($calendar->users, 201);
+
     }
 
+    /*
     public function update(Request $request, Calendar $calendar, User $user){
 
         $request->validate([
@@ -48,11 +51,13 @@ class UserCalendarController extends Controller
         $user -> update($request->all());
         return response() -> json($user, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+    */
 
     public function delete(Request $request,  Calendar $calendar, User $user){
-        $user = $calendar->users()->where('id', $user->id)->firstOrFail();
-        $user -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+
+        $calendar = Calendar::findOrFail($calendar->id);
+        $calendar->users()->detach($user->id);
+        return response()->json(null, 404);
     }
 
 }
