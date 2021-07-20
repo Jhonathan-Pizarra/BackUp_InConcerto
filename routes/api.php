@@ -65,7 +65,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('register', [UserController::class,'register']);
     //PUT
+    Route::put('/users/{user}', [UserController::class, 'update']);
     //DELETE
+    Route::delete('/users/{user}', [UserController::class, 'delete']);
 
 
     //FESTIVALES
