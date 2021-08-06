@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //Rutas públicas
 //Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'authenticate']);
-Route::get('/festivals', [FestivalController::class, 'index']);
+//Route::get('/festivals', [FestivalController::class, 'index']);
 //Route::get('/concerts', [ConcertController::class, 'index']);
 
 //Rutas protegidas o privadas
@@ -72,7 +72,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //FESTIVALES
     //GET
-    //Route::get('/festivals', [FestivalController::class, 'index']);
+    Route::get('/festivals', [FestivalController::class, 'index']);
     //GET by ID
     Route::get('/festivals/{festival}', [FestivalController::class, 'show']);
     //POST

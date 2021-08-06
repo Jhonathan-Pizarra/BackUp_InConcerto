@@ -65,7 +65,7 @@ class CalendarController extends Controller
         $this->authorize('delete', $calendar);
 
         $calendar -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
 }

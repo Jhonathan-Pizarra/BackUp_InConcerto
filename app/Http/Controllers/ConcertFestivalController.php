@@ -16,6 +16,7 @@ class ConcertFestivalController extends Controller
 
     public function index(Festival $festival){
         return response()->json(ConcertFestRes::collection($festival->concerts),200);
+        //return response()->json(new ConcertCollection(ConcertFestRes::collection($festival->concerts)),200);
     }
 
     public function show(Festival $festival, Concert $concert){

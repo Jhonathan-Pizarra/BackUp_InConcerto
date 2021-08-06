@@ -33,6 +33,7 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'role' => $request->get('role'),
         ]);
 
         $token = JWTAuth::fromUser($user);
@@ -43,7 +44,7 @@ class UserController extends Controller
         //Tiene permiso:
         //$this->authorize('delete', $user);
         $user -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
     //Funcion de autenticacion(LOGIN) de usuario con JWT
@@ -91,12 +92,14 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string',
         ]);
 
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'role' => $request->get('role'),
         ]);
 
         $token = JWTAuth::fromUser($user);

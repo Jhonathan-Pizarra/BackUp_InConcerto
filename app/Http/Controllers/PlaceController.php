@@ -50,7 +50,8 @@ class PlaceController extends Controller
 
         $request->validate([
             'name' => 'string|max:255',
-            'address' => 'string|unique:places|max:255',
+            //'address' => 'string|unique:places|max:255',
+            'address' => 'string|max:255',
             'permit' => 'boolean',
             'aforo' => 'integer',
             'description' => 'string|max:255'
@@ -65,6 +66,6 @@ class PlaceController extends Controller
         $this->authorize('delete', $place);
 
         $place -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 }

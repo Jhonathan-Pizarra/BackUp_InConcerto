@@ -65,6 +65,6 @@ class FeedingPlaceController extends Controller
         $this->authorize('delete', $feeding_place);
 
         $feeding_place -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 }
