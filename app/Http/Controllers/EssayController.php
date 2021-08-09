@@ -60,6 +60,6 @@ class EssayController extends Controller
         $this->authorize('delete', $essay);
 
         $essay -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a borrado exitoso
     }
 }

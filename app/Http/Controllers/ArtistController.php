@@ -38,11 +38,13 @@ class ArtistController extends Controller
 
         $request->validate([
             'ciOrPassport' => 'required|string|unique:artists|max:15',
+            //'ciOrPassport' => 'required|string|max:15',
             'artisticOrGroupName' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'nationality' => 'required|string|max:255',
             'mail' => 'required|string|unique:artists|email|max:255',
+            //'mail' => 'required|string|email|max:255',
             'phone' => 'required|string|max:10',
             'passage' => 'required',
             'instruments' => 'required|string',
@@ -61,12 +63,12 @@ class ArtistController extends Controller
         $this->authorize('update', $artist);
 
         $request->validate([
-            'ciOrPassport' => 'string|unique:artists|max:15',
+            'ciOrPassport' => 'string|max:15',
             'artisticOrGroupName' => 'string|max:255',
             'name' => 'string|max:255',
             'lastName' => 'string|max:255',
             'nationality' => 'string|max:255',
-            'mail' => 'string|unique:artists|email|max:255',
+            'mail' => 'string|email|max:255',
             'phone' => 'string|max:10',
             'passage' => 'required',
             'instruments' => 'string',
@@ -84,7 +86,7 @@ class ArtistController extends Controller
         //Tiene permiso:
         $this->authorize('delete', $artist);
         $artist -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
 }

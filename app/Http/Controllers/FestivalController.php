@@ -43,22 +43,22 @@ class FestivalController extends Controller
 
         //Creamos una instancia y subimso la imagen al servidor
         $festival = new Festival($request->all());
-        $result = $request->image->storeOnCloudinary();
-        $path = $result->getPath();
-        //$local = $request->image->store('public/festivals');
+        //$result = $request->image->storeOnCloudinary();
+        //$path = $result->getPath();
+        $local = $request->image->store('public/festivals');
 
         //Al campo image le setea una ruta y le guardamos en la bdd
         //$festival->image = $path; output: "https://res.cloudinary.com/inconcerto/image/upload/v1626911211/zuiyb1lvfsmdre6gvuov.jpg"
         //$festival->image = dirname($path); output: "https://res.cloudinary.com/inconcerto/image/upload/v1626911211"
         //$festival->image = basename($path); output: "zuiyb1lvfsmdre6gvuov.jpg"
-        $base =  basename(dirname($path).basename($path)); //output: "v1626911211zuiyb1lvfsmdre6gvuov.jpg"
-        $folder =  substr($base, 0, -24); //output: "v1626911211"
+        //$base =  basename(dirname($path).basename($path)); //output: "v1626911211zuiyb1lvfsmdre6gvuov.jpg"
+        //$folder =  substr($base, 0, -24); //output: "v1626911211"
         //Por tanto:
-        $img_path = $folder.'/'.basename($path);
+        //$img_path = $folder.'/'.basename($path);
 
-        $festival->image = $img_path;
+        //$festival->image = $img_path;
         //$festival->image = 'festivals/'.$img_path;
-        //$festival->image = 'festivals/' . basename($path); //estaba en local
+        $festival->image = 'festivals/' . basename($local); //estaba en local
         $festival->save();
 
         $users = User::all();
@@ -234,6 +234,6 @@ class FestivalController extends Controller
         $this->authorize('delete', $festival);
 
         $festival -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a borrado exitoso
     }
 }
