@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
-use App\Models\Calendar;
-use App\Http\Resources\User as UserCalRes;
-use Illuminate\Http\Request;
+use App\Http\Resources\CalendarCollection;
 use App\Http\Resources\UserCollection;
+use App\Models\Calendar;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class UserCalendarController extends Controller
+class CalendarUserController extends Controller
 {
     private static $messages = [
         'name' => 'required|string|max:255',
@@ -16,25 +15,25 @@ class UserCalendarController extends Controller
         'password' => 'required|string'
     ];
 
-    public function index(Calendar $calendar){
-        return response()->json(new UserCollection($calendar->users),200);
+    public function index(User $user){
+        return response()->json(new CalendarCollection($user->calendars),200);
     }
 
-    public function show(Calendar $calendar, User $user){
-        $calendarUser = $calendar->users()->where('id', $user->id)->firstOrFail();
-        return response()->json($calendarUser, 200);
+    public function show(User $user, Calendar $calendar){
+        $userCalendar = $user->calendars()->where('id', $calendar->id)->firstOrFail();
+        return response()->json($userCalendar, 200);
     }
 
-    public function store(Request $request, Calendar $calendar){
+    public function store(Request $request, User $user){
 
         $request->validate([
             'user_id' => 'exists:users,id',
             'calendar_id' => 'exists:calendars,id',
         ], self::$messages);
 
-        $calendar = Calendar::findOrFail($request->calendar_id);
-        $calendar->users()->attach($request->user_id);
-        return response()->json($calendar->users, 201);
+        $user = User::findOrFail($request->user_id);
+        $user->calendars()->attach($request->calendar_id);
+        return response()->json($user->calendars, 201);
 
     }
 
@@ -53,11 +52,10 @@ class UserCalendarController extends Controller
     }
     */
 
-    public function delete(Request $request,  Calendar $calendar, User $user){
+    public function delete(Request $request, User $user, Calendar $calendar){
 
-        $calendar = Calendar::findOrFail($calendar->id);
-        $calendar->users()->detach($user->id);
+        $user = User::findOrFail($user->id);
+        $user->calendars()->detach($calendar->id);
         return response()->json(null, 204);
     }
-
 }

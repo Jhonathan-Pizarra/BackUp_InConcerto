@@ -2,39 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Lodging;
-use App\Http\Resources\User as UserLodRes;
+use App\Http\Resources\LodgingCollection;
 use App\Http\Resources\UserCollection;
-
+use App\Models\Lodging;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserLodgingController extends Controller
+class LodgingUserController extends Controller
 {
     private static $messages = [
         'required' => 'El campo :attribute es obligatorio.',
     ];
 
-    public function index(Lodging $lodging){
-        return response()->json(new UserCollection($lodging->users),200);
-        //return response()->json(UserLodRes::collection($lodging->users),200);
+    public function index(User $user){
+        return response()->json(new LodgingCollection($user->lodgings),200);
     }
 
-    public function show(Lodging $lodging, User $user){
-        $lodgingUser = $lodging->users()->where('id', $user->id)->firstOrFail();
-        return response()->json($lodgingUser, 200);
+    public function show(User $user, Lodging $lodging){
+        $userLodging = $user->lodgings()->where('id', $lodging->id)->firstOrFail();
+        return response()->json($userLodging, 200);
     }
 
-    public function store(Request $request, Lodging $lodging){
+    public function store(Request $request, User $user){
 
         $request->validate([
             'user_id' => 'exists:users,id',
             'lodging_id' => 'exists:lodgings,id',
         ], self::$messages);
 
-        $lodging = Lodging::findOrFail($request->lodging_id);
-        $lodging->users()->attach($request->user_id);
-        return response()->json($lodging->users, 201);//codigo 201 correspodnde a create
+        $user = User::findOrFail($request->user_id);
+        $user->lodgings()->attach($request->lodging_id);
+        return response()->json($user->lodgings, 201);//codigo 201 correspodnde a create
     }
 
     /*
@@ -52,12 +50,10 @@ class UserLodgingController extends Controller
     }
     */
 
-    public function delete(Request $request, Lodging $lodging, User $user){
+    public function delete(Request $request, User $user, Lodging $lodging){
 
-        $lodging = Lodging::findOrFail($lodging->id);
-        $lodging->users()->detach($user->id);
+        $user = User::findOrFail($user->id);
+        $user->lodgings()->detach($lodging->id);
         return response()->json(null, 204);
     }
-
-
 }

@@ -31,6 +31,7 @@ class FestivalController extends Controller
         return response()->json(new FestivalRes($festival),200);
     }
 
+    /*
     public function store(Request $request){
         //Tiene permiso:
         $this->authorize('create', Festival::class);
@@ -59,6 +60,44 @@ class FestivalController extends Controller
         //$festival->image = $img_path;
         //$festival->image = 'festivals/'.$img_path;
         $festival->image = 'festivals/' . basename($local); //estaba en local
+        $festival->save();
+
+        $users = User::all();
+        Mail::to($users)->send(new NewFestival($festival));
+        return response()->json(new FestivalRes($festival), 201);
+        //$festival = Festival::create($request ->all());
+        //return response() -> json($festival, 201); //codigo 201 correspodnde a create
+
+    }*/
+
+    public function store(Request $request){
+        //Tiene permiso:
+        $this->authorize('create', Festival::class);
+
+        $request->validate([
+            'name' => 'required|string|unique:festivals|max:255', //unique:tabla
+            'description' => 'required|string|max:255',
+            'image' => 'required|image|dimensions:min_width=200,min_height=200',
+        ], self::$messages);
+
+        //Creamos una instancia y subimso la imagen al servidor
+        $festival = new Festival($request->all());
+        $result = $request->image->storeOnCloudinary();
+        $path = $result->getPath();
+        //$local = $request->image->store('public/festivals');
+
+        //Al campo image le setea una ruta y le guardamos en la bdd
+        //$festival->image = $path; output: "https://res.cloudinary.com/inconcerto/image/upload/v1626911211/zuiyb1lvfsmdre6gvuov.jpg"
+        //$festival->image = dirname($path); output: "https://res.cloudinary.com/inconcerto/image/upload/v1626911211"
+        //$festival->image = basename($path); output: "zuiyb1lvfsmdre6gvuov.jpg"
+        $base =  basename(dirname($path).basename($path)); //output: "v1626911211zuiyb1lvfsmdre6gvuov.jpg"
+        $folder =  substr($base, 0, -24); //output: "v1626911211"
+        //Por tanto:
+        $img_path = $folder.'/'.basename($path);
+
+        $festival->image = $img_path;
+        //$festival->image = 'festivals/'.$img_path;
+        //$festival->image = 'festivals/' . basename($path); //estaba en local
         $festival->save();
 
         $users = User::all();
@@ -228,6 +267,7 @@ class FestivalController extends Controller
         $festival->update($request->all());
         return response() -> json($festival, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+
 
     public function delete(Request $request, Festival $festival){
         //Tiene permiso:

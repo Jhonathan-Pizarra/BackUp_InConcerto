@@ -45,7 +45,8 @@ class ResourceController extends Controller
         $this->authorize('update', $resource);
 
         $request->validate([
-            'name' => 'string|unique:resources|max:255',
+            //'name' => 'string|unique:resources|max:255',
+            'name' => 'string|max:255',
             'quantity' => 'string',
             'description' => 'string',
         ], self::$messages);

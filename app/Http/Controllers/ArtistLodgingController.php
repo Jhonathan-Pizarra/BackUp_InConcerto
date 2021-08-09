@@ -55,7 +55,7 @@ class ArtistLodgingController extends Controller
 
         $lodging = Lodging::findOrFail($lodging->id);
         $lodging->artists()->detach($artist->id);
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
 }
