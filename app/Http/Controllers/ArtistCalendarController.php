@@ -87,7 +87,7 @@ class ArtistCalendarController extends Controller
 
         $calendar = Calendar::findOrFail($calendar->id);
         $calendar->artists()->detach($artist->id);
-        return response()->json(null, 404);
+        return response()->json(null, 204);
 
         /*
         $artist = $calendar->artists()->where('id', $artist->id)->firstOrFail();

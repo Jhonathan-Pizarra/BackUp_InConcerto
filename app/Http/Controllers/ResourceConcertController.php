@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Resource;
-use App\Models\Concert;
-use App\Http\Resources\Resource as ConcertResourceRes;
+use App\Http\Resources\ConcertCollection;
 use App\Http\Resources\ResorceCollection;
-
+use App\Models\Concert;
+use App\Models\Resource;
 use Illuminate\Http\Request;
 
-class ConcertResourceController extends Controller
+class ResourceConcertController extends Controller
 {
     private static $messages = [
         'required' => 'El campo :attribute es obligatorio.'
     ];
 
-    public function index(Concert $concert){
-        return response()->json(new ResorceCollection($concert->resources),200);
+    public function index(Resource $resource){
+        return response()->json(new ConcertCollection($resource->concerts),200);
     }
 
-    public function show(Concert $concert, Resource $resource){
-        $concertResource = $concert->resources()->where('resource_id', $resource->id)->firstOrFail();
-        return response()->json($concertResource, 200);
+    public function show(Resource $resource, Concert $concert){
+        $resourceConcert = $resource->concerts()->where('concert_id', $concert->id)->firstOrFail();
+        return response()->json($resourceConcert, 200);
     }
 
     public function store(Request $request){
@@ -31,9 +30,9 @@ class ConcertResourceController extends Controller
             'resource_id' => 'exists:resources,id',
         ], self::$messages);
 
-        $concert = Concert::findOrFail($request->concert_id);
-        $concert->resources()->attach($request->resource_id);
-        return response()->json($concert->resources, 201);
+        $resource = Resource::findOrFail($request->resource_id);
+        $resource->concerts()->attach($request->concert_id);
+        return response()->json($resource->concerts, 201);
     }
 
     /*
@@ -50,11 +49,10 @@ class ConcertResourceController extends Controller
     }
     */
 
-    public function delete(Request $request, Concert $concert, Resource $resource){
+    public function delete(Request $request, Resource $resource, Concert $concert){
 
-        $concert = Concert::findOrFail($concert->id);
-        $concert ->resources()->detach($resource->id);
+        $resource = Resource::findOrFail($resource->id);
+        $resource ->concerts()->detach($concert->id);
         return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
-
 }

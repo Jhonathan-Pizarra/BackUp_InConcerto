@@ -63,7 +63,7 @@ class UserFeedingController extends Controller
     public function delete(Request $request, User $user, Feeding $feeding){
         $feeding = $user->feedings()->where('id', $feeding->id)->firstOrFail();
         $feeding -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
 }

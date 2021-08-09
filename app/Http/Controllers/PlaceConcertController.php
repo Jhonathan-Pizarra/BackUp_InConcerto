@@ -59,7 +59,7 @@ class PlaceConcertController extends Controller
     public function delete(Request $request, Place $place, Concert $concert){
         $concert = $place->concerts()->where('id', $concert->id)->firstOrFail();
         $concert -> delete();
-        return response() -> json(null, 404); //codigo 204 correspodnde a not found
+        return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
 
 }
