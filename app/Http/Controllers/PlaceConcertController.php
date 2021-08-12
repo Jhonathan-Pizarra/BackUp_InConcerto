@@ -18,11 +18,14 @@ class PlaceConcertController extends Controller
         return response()->json(ConcertRes::collection($place->concerts),200);
     }
 
+    /*
     public function show(Place $place, Concert $concert){
         $concert = $place->concerts()->where('id', $concert->id)->firstOrFail();
         return response()->json($concert, 200);
     }
+    */
 
+    /*
     public function store(Request $request, Place $place){
 
         $request->validate([
@@ -38,7 +41,9 @@ class PlaceConcertController extends Controller
         $concert = $place->concerts()->save(new Concert($request->all()));
         return response()->json($concert, 201);
     }
+    */
 
+    /*
     public function update(Request $request, Place $place, Concert $concert){
 
         $request->validate([
@@ -55,11 +60,14 @@ class PlaceConcertController extends Controller
         $concert -> update($request->all());
         return response() -> json($concert, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+    */
 
+    /*
     public function delete(Request $request, Place $place, Concert $concert){
         $concert = $place->concerts()->where('id', $concert->id)->firstOrFail();
         $concert -> delete();
         return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
+    */
 
 }

@@ -42,6 +42,7 @@ class ArtistFeedingController extends Controller
         return response()->json($feeding, 201);
     }
 
+    /*
     public function update(Request $request, Artist $artist, Feeding $feeding){
 
         $request->validate([
@@ -59,11 +60,14 @@ class ArtistFeedingController extends Controller
         $feeding -> update($request->all());
         return response() -> json($feeding, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+    */
 
+    /*
     public function delete(Request $request, Artist $artist, Feeding $feeding){
         $feeding = $artist->feedings()->where('id', $feeding->id)->firstOrFail();
         $feeding -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
+    */
 
 }

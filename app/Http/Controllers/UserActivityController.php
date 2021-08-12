@@ -20,10 +20,12 @@ class UserActivityController extends Controller
         return response()->json(ActivityUserRes::collection($user->activities),200);
     }
 
+    /*
     public function show(User $user, ActivityFestival $activityFestival){
         $activityFestival = $user->activities()->where('id', $activityFestival->id)->firstOrFail();
         return response()->json($activityFestival, 200);
     }
+    */
 
     public function store(Request $request, User $user){
 
@@ -40,6 +42,7 @@ class UserActivityController extends Controller
         return response()->json($activityFestival, 201);
     }
 
+    /*
     public function update(Request $request, User $user, ActivityFestival $activityFestival){
 
         $request->validate([
@@ -55,10 +58,13 @@ class UserActivityController extends Controller
         $activityFestival -> update($request->all());
         return response() -> json($activityFestival, 200); //codigo 200 correspodnde a modificacion exitosa
     }
+    */
 
+    /*
     public function delete(Request $request, User $user, ActivityFestival $activityFestival){
         $activityFestival = $user->activities()->where('id', $activityFestival->id)->firstOrFail();
         $activityFestival -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
+    */
 }

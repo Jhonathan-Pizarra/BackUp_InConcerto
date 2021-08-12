@@ -227,13 +227,13 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //GET
     Route::get('/places/{place}/concerts', [PlaceConcertController::class, 'index']);
     //GET by ID
-    Route::get('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'show']);
+    //Route::get('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'show']);
     //POST
-    Route::post('/places/{place}/concerts', [PlaceConcertController::class, 'store']);
+    //Route::post('/places/{place}/concerts', [PlaceConcertController::class, 'store']);
     //PUT
-    Route::put('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'update']);
+    //Route::put('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'update']);
     //DELETE
-    Route::delete('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'delete']);
+    //Route::delete('/places/{place}/concerts/{concert}', [PlaceConcertController::class, 'delete']);
 
     //CONCIERTO_3: http://localhost:8000/api/festivals/5/concerts
     //GET
@@ -245,9 +245,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //PUT
     Route::put('/festivals/{festival}/concerts/{concert}', [ConcertFestivalController::class, 'update']);
     //DELETE
-    Route::delete('/festivals/{festival}/concerts/{concert}', [ConcertFestivalController::class, 'delete']);
+    //Route::delete('/festivals/{festival}/concerts/{concert}', [ConcertFestivalController::class, 'delete']);
 
-    //ENSAYO_2: http://localhost:8000/api/festivals/5/essays
+    //ENSAYO_2: http://localhost:8000/api/festivals/5/essays (No está siendo usado)
     //GET
     Route::get('/festivals/{festival}/essays', [EssayFestivalController::class, 'index']);
     //GET by ID
@@ -259,7 +259,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/festivals/{festival}/essays/{essay}', [EssayFestivalController::class, 'delete']);
 
-    //ACTIVIDADES FESTIVAL_2: http://localhost:8000/api/festivals/5/activityfestivals
+    //ACTIVIDADES FESTIVAL_2: http://localhost:8000/api/festivals/5/activityfestivals (No está siendo usado)
     //GET
     Route::get('/festivals/{festival}/activityfestivals', [ActivityController::class, 'index']);
     //GET by ID
@@ -276,25 +276,13 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //GET
     Route::get('/users/{user}/activityfestivals', [UserActivityController::class, 'index']);
     //GET by ID
-    Route::get('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'show']);
+    //Route::get('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'show']);
     //POST
     Route::post('/users/{user}/activityfestivals', [UserActivityController::class, 'store']);
     //PUT
-    Route::put('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'update']);
+    //Route::put('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'update']);
     //DELETE
-    Route::delete('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'delete']);
-
-    //ALIMENTACION_2: http://localhost:8000/api/artists/7/feedings
-    //GET
-    Route::get('/artists/{artist}/feedings', [ArtistFeedingController::class, 'index']);
-    //GET by ID
-    Route::get('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'show']);
-    //POST
-    Route::post('/artists/{artist}/feedings', [ArtistFeedingController::class, 'store']);
-    //PUT
-    Route::put('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'update']);
-    //DELETE
-    Route::delete('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'delete']);
+    //Route::delete('/users/{user}/activityfestivals/{activityfestival}', [UserActivityController::class, 'delete']);
 
     //ALIMENTACION_3: http://localhost:8000/api/users/3/feedings
     //A pesar de estar logeado como user 1 puedo ver la info del user 3 y su feeding
@@ -305,11 +293,132 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/users/{user}/feedings', [UserFeedingController::class, 'store']);
     //PUT
-    Route::put('/users/{user}/feedings/{feeding}', [UserFeedingController::class, 'update']);
+    //Route::put('/users/{user}/feedings/{feeding}', [UserFeedingController::class, 'update']);
     //DELETE
-    Route::delete('/users/{user}/feedings/{feeding}', [UserFeedingController::class, 'delete']);
+    //Route::delete('/users/{user}/feedings/{feeding}', [UserFeedingController::class, 'delete']);
 
-    //ALIMENTACION_4: http://localhost:8000/api/feeding_places/1/feedings
+    //USER_3: http://localhost:8000/api/users/1/calendars
+    //GET
+    Route::get('/users/{user}/calendars', [CalendarUserController::class, 'index']);
+    //GET by ID
+    Route::get('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'show']);
+    //POST
+    Route::post('/users/{user}/calendars', [CalendarUserController::class, 'store']);
+    //PUT
+    //Route::put('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'update']);
+    //DELETE
+    Route::delete('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'delete']);
+
+    //USER_4: http://localhost:8000/api/users/1/lodgings
+    //GET
+    Route::get('/users/{user}/lodgings', [LodgingUserController::class, 'index']);
+    //GET by ID
+    Route::get('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'show']);
+    //POST
+    Route::post('/users/{user}/lodgings', [LodgingUserController::class, 'store']);
+    //PUT
+    //Route::put('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'update']);
+    //DELETE
+    Route::delete('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'delete']);
+
+    //ALIMENTACION_2: http://localhost:8000/api/artists/7/feedings
+    //GET
+    Route::get('/artists/{artist}/feedings', [ArtistFeedingController::class, 'index']);
+    //GET by ID
+    Route::get('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'show']);
+    //POST
+    Route::post('/artists/{artist}/feedings', [ArtistFeedingController::class, 'store']);
+    //PUT
+    //Route::put('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'update']);
+    //DELETE
+    //Route::delete('/artists/{artist}/feedings/{feeding}', [ArtistFeedingController::class, 'delete']);
+
+    //Artist_3: http://localhost:8000/api/artists/1/calendars
+    //GET
+    Route::get('/artists/{artist}/calendars', [CalendarArtistController::class, 'index']);
+    //GET by ID
+    Route::get('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'show']);
+    //POST
+    Route::post('/artists/{artist}/calendars', [CalendarArtistController::class, 'store']);
+    //PUT
+    //Route::put('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'update']);
+    //DELETE
+    Route::delete('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'delete']);
+
+    //ARTISTS_5: http://localhost:8000/api/artists/1/lodging
+    //GET
+    Route::get('/artists/{artist}/lodgings', [LodgingArtistController::class, 'index']);
+    //GET by ID
+    Route::get('/artists/{artist}/lodgings/{lodging}', [LodgingArtistController::class, 'show']);
+    //POST
+    Route::post('/artists/{artist}/lodgings', [LodgingArtistController::class, 'store']);
+    //PUT
+    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
+    //DELETE
+    Route::delete('/artists/{artist}/lodgings/{lodging}', [LodgingArtistController::class, 'delete']);
+
+    //ARTISTS_3: http://localhost:8000/api/calendars/2/artists
+    //GET
+    Route::get('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'index']);
+    //GET by ID
+    Route::get('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'show']);
+    //POST
+    Route::post('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'store']);
+    //PUT
+    //Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
+    //DELETE
+    Route::delete('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'delete']);
+
+    //USER_2: http://localhost:8000/api/calendars/1/users
+    //GET
+    Route::get('/calendars/{calendar}/users', [UserCalendarController::class, 'index']);
+    //GET by ID
+    Route::get('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'show']);
+    //POST
+    Route::post('/calendars/{calendar}/users', [UserCalendarController::class, 'store']);
+    //PUT
+    //Route::put('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'update']);
+    //DELETE
+    Route::delete('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'delete']);
+
+    //ARTISTS_4: http://localhost:8000/api/lodgings/1/artists
+    //GET
+    Route::get('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'index']);
+    //GET by ID
+    Route::get('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'show']);
+    //POST
+    Route::post('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'store']);
+    //PUT
+    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
+    //DELETE
+    Route::delete('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'delete']);
+
+
+    //USER_3: http://localhost:8000/api/lodgings/1/users
+    //GET
+    Route::get('/lodgings/{lodging}/users', [UserLodgingController::class, 'index']);
+    //GET by ID
+    Route::get('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'show']);
+    //POST
+    Route::post('/lodgings/{lodging}/users', [UserLodgingController::class, 'store']);
+    //PUT
+    //Route::put('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'update']);
+    //DELETE
+    Route::delete('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'delete']);
+
+    //RESOURCES_2: http://localhost:8000/api/concerts/2/resources/2
+    //GET
+    Route::get('/resources/{resource}/concerts', [ResourceConcertController::class, 'index']);
+    //GET by ID
+    //Route::get('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'show']);
+    //POST
+    //Route::post('/resources/{resource}/concerts', [ResourceConcertController::class, 'store']);
+    //PUT
+    //Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
+    //DELETE
+    //Route::delete('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'delete']);
+
+    //ALIMENTACION_4: http://localhost:8000/api/feeding_places/1/feedings (No está siendo usada)
     //GET
     Route::get('/feeding_places/{feeding_place}/feedings', [FeedsPlaceController::class, 'index']);
     //GET by ID
@@ -321,7 +430,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/feeding_places/{feeding_place}/feedings/{feeding}', [FeedsPlaceController::class, 'delete']);
 
-    //TRANPSORT_2: http://localhost:8000/api/calendars/3/transports
+    //TRANPSORT_2: http://localhost:8000/api/calendars/3/transports (No está siendo usado)
     //GET
     Route::get('/calendars/{calendar}/transports', [CalendarTransportController::class, 'index']);
     //GET by ID
@@ -345,18 +454,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //DELETE
     Route::delete('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'delete']);
 
-    //RESOURCES_2: http://localhost:8000/api/concerts/2/resources/2
-    //GET
-    Route::get('/resources/{resource}/concerts', [ResourceConcertController::class, 'index']);
-    //GET by ID
-    Route::get('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'show']);
-    //POST
-    Route::post('/resources/{resource}/concerts', [ResourceConcertController::class, 'store']);
-    //PUT
-    //Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
-    //DELETE
-    Route::delete('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'delete']);
-
     //ARTISTS_2: http://localhost:8000/api/concerts/1/artists
     //GET
     Route::get('/concerts/{concert}/artists', [ArtistConcertController::class, 'index']);
@@ -365,107 +462,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //POST
     Route::post('/concerts/{concert}/artists', [ArtistConcertController::class, 'store']);
     //PUT
-    Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
+    //Route::put('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'update']);
     //DELETE
     Route::delete('/concerts/{concert}/artists/{artist}', [ArtistConcertController::class, 'delete']);
-
-    //ARTISTS_3: http://localhost:8000/api/calendars/2/artists
-    //GET
-    Route::get('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'index']);
-    //GET by ID
-    Route::get('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'show']);
-    //POST
-    Route::post('/calendars/{calendar}/artists', [ArtistCalendarController::class, 'store']);
-    //PUT
-    //Route::put('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'update']);
-    //DELETE
-    Route::delete('/calendars/{calendar}/artists/{artist}', [ArtistCalendarController::class, 'delete']);
-
-    //USER_2: http://localhost:8000/api/calendars/1/users
-    //GET
-    Route::get('/calendars/{calendar}/users', [UserCalendarController::class, 'index']);
-    //GET by ID
-    Route::get('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'show']);
-    //POST
-    Route::post('/calendars/{calendar}/users', [UserCalendarController::class, 'store']);
-    //PUT
-    Route::put('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'update']);
-    //DELETE
-    Route::delete('/calendars/{calendar}/users/{user}', [UserCalendarController::class, 'delete']);
-
-    //USER_3: http://localhost:8000/api/users/1/calendars
-    //GET
-    Route::get('/users/{user}/calendars', [CalendarUserController::class, 'index']);
-    //GET by ID
-    Route::get('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'show']);
-    //POST
-    Route::post('/users/{user}/calendars', [CalendarUserController::class, 'store']);
-    //PUT
-    Route::put('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'update']);
-    //DELETE
-    Route::delete('/users/{user}/calendars/{calendar}', [CalendarUserController::class, 'delete']);
-
-    //Artist_3: http://localhost:8000/api/artists/1/calendars
-    //GET
-    Route::get('/artists/{artist}/calendars', [CalendarArtistController::class, 'index']);
-    //GET by ID
-    Route::get('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'show']);
-    //POST
-    Route::post('/artists/{artist}/calendars', [CalendarArtistController::class, 'store']);
-    //PUT
-    Route::put('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'update']);
-    //DELETE
-    Route::delete('/artists/{artist}/calendars/{calendar}', [CalendarArtistController::class, 'delete']);
-
-
-    //ARTISTS_4: http://localhost:8000/api/lodgings/1/artists
-    //GET
-    Route::get('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'index']);
-    //GET by ID
-    Route::get('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'show']);
-    //POST
-    Route::post('/lodgings/{lodging}/artists', [ArtistLodgingController::class, 'store']);
-    //PUT
-    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
-    //DELETE
-    Route::delete('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'delete']);
-
-    //ARTISTS_5: http://localhost:8000/api/artists/1/lodging
-    //GET
-    Route::get('/artists/{artist}/lodgings', [LodgingArtistController::class, 'index']);
-    //GET by ID
-    Route::get('/artists/{artist}/lodgings/{lodging}', [LodgingArtistController::class, 'show']);
-    //POST
-    Route::post('/artists/{artist}/lodgings', [LodgingArtistController::class, 'store']);
-    //PUT
-    //Route::put('/lodgings/{lodging}/artists/{artist}', [ArtistLodgingController::class, 'update']);
-    //DELETE
-    Route::delete('/artists/{artist}/lodgings/{lodging}', [LodgingArtistController::class, 'delete']);
-
-    //USER_3: http://localhost:8000/api/lodgings/1/users
-    //GET
-    Route::get('/lodgings/{lodging}/users', [UserLodgingController::class, 'index']);
-    //GET by ID
-    Route::get('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'show']);
-    //POST
-    Route::post('/lodgings/{lodging}/users', [UserLodgingController::class, 'store']);
-    //PUT
-    Route::put('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'update']);
-    //DELETE
-    Route::delete('/lodgings/{lodging}/users/{user}', [UserLodgingController::class, 'delete']);
-
-    //USER_4: http://localhost:8000/api/users/1/lodgings
-    //GET
-    Route::get('/users/{user}/lodgings', [LodgingUserController::class, 'index']);
-    //GET by ID
-    Route::get('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'show']);
-    //POST
-    Route::post('/users/{user}/lodgings', [LodgingUserController::class, 'store']);
-    //PUT
-    Route::put('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'update']);
-    //DELETE
-    Route::delete('/users/{user}/lodgings/{lodging}', [LodgingUserController::class, 'delete']);
-
 
 });
 
