@@ -19,10 +19,12 @@ class ConcertFestivalController extends Controller
         //return response()->json(new ConcertCollection(ConcertFestRes::collection($festival->concerts)),200);
     }
 
+
     public function show(Festival $festival, Concert $concert){
         $concert = $festival->concerts()->where('id', $concert->id)->firstOrFail();
         return response()->json($concert, 200);
     }
+
 
     public function store(Request $request, Festival $festival){
 
@@ -57,10 +59,12 @@ class ConcertFestivalController extends Controller
         return response() -> json($concert, 200); //codigo 200 correspodnde a modificacion exitosa
     }
 
+    /*
     public function delete(Request $request, Festival $festival, Concert $concert){
         $concert = $festival->concerts()->where('id', $concert->id)->firstOrFail();
         $concert -> delete();
         return response() -> json(null, 404); //codigo 204 correspodnde a not found
     }
+    */
 
 }

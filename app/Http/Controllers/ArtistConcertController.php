@@ -35,40 +35,40 @@ class ArtistConcertController extends Controller
         return response()->json($concert->artists, 201);
     }
 
-    public function update(Request $request, Concert $concert,  Artist $artist){
-
-        /*
-        $request->validate([
-            'artist_id' => 'unique:artists|exists:artists,id',
-            'concert_id' => 'unique:artists|exists:concerts,id',
-        ], self::$messages);
-
-        $artist = $concert->artists()->where('id', $artist->id)->firstOrFail();
-        $artist -> update($request->all());
-        return response() -> json($artist, 200); //codigo 200 correspodnde a modificacion exitosa
-        */
-        //Tiene permiso:
-        $this->authorize('update', $artist);
-
-        $request->validate([
-            'ciOrPassport' => 'string|max:15',
-            'artisticOrGroupName' => 'string|max:255',
-            'name' => 'string|max:255',
-            'lastName' => 'string|max:255',
-            'nationality' => 'string|max:255',
-            'mail' => 'string|email|max:255',
-            'phone' => 'string|max:10',
-            'passage' => 'required',
-            'instruments' => 'string',
-            'emergencyPhone' => 'string|max:25',
-            'emergencyMail' => 'string|email|max:255',
-            'foodGroup' => 'string|max:255',
-            'observation' => 'string',
-        ], self::$messages);
-
-        $artist -> update($request->all());
-        return response() -> json($artist, 200); //
-    }
+//    public function update(Request $request, Concert $concert,  Artist $artist){
+//
+//        /*
+//        $request->validate([
+//            'artist_id' => 'unique:artists|exists:artists,id',
+//            'concert_id' => 'unique:artists|exists:concerts,id',
+//        ], self::$messages);
+//
+//        $artist = $concert->artists()->where('id', $artist->id)->firstOrFail();
+//        $artist -> update($request->all());
+//        return response() -> json($artist, 200); //codigo 200 correspodnde a modificacion exitosa
+//        */
+//        //Tiene permiso:
+//        $this->authorize('update', $artist);
+//
+//        $request->validate([
+//            'ciOrPassport' => 'string|max:15',
+//            'artisticOrGroupName' => 'string|max:255',
+//            'name' => 'string|max:255',
+//            'lastName' => 'string|max:255',
+//            'nationality' => 'string|max:255',
+//            'mail' => 'string|email|max:255',
+//            'phone' => 'string|max:10',
+//            'passage' => 'required',
+//            'instruments' => 'string',
+//            'emergencyPhone' => 'string|max:25',
+//            'emergencyMail' => 'string|email|max:255',
+//            'foodGroup' => 'string|max:255',
+//            'observation' => 'string',
+//        ], self::$messages);
+//
+//        $artist -> update($request->all());
+//        return response() -> json($artist, 200); //
+//    }
 
     public function delete(Request $request, Concert $concert, Artist $artist){
 

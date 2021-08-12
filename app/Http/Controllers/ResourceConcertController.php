@@ -18,11 +18,14 @@ class ResourceConcertController extends Controller
         return response()->json(new ConcertCollection($resource->concerts),200);
     }
 
+    /*
     public function show(Resource $resource, Concert $concert){
         $resourceConcert = $resource->concerts()->where('concert_id', $concert->id)->firstOrFail();
         return response()->json($resourceConcert, 200);
     }
+    */
 
+    /*
     public function store(Request $request){
 
         $request->validate([
@@ -34,6 +37,7 @@ class ResourceConcertController extends Controller
         $resource->concerts()->attach($request->concert_id);
         return response()->json($resource->concerts, 201);
     }
+    */
 
     /*
     public function update(Request $request, Concert $concert, Resource $resource){
@@ -49,10 +53,12 @@ class ResourceConcertController extends Controller
     }
     */
 
+    /*
     public function delete(Request $request, Resource $resource, Concert $concert){
 
         $resource = Resource::findOrFail($resource->id);
         $resource ->concerts()->detach($concert->id);
         return response() -> json(null, 204); //codigo 204 correspodnde a not found
     }
+    */
 }
