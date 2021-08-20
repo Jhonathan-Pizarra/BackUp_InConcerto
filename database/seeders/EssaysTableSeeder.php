@@ -19,14 +19,14 @@ class EssaysTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 15; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             Essay::create([
                 //Atributos $fillable
                 'dateEssay' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
                 'place' => $faker -> name,
-                'festival_id' => $faker -> numberBetween(1, 5),
+                'festival_id' => $faker -> numberBetween(1, 3),
 
             ]);
 

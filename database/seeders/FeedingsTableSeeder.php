@@ -19,7 +19,7 @@ class FeedingsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             Feeding::create([
                 //Atributos $fillable
@@ -27,9 +27,9 @@ class FeedingsTableSeeder extends Seeder
                 'food' => $faker -> name,
                 'observation' => $faker ->text,
                 'quantityLunchs' => $faker -> randomDigitNotNull,
-                'user_id' => $faker -> numberBetween(1, 10),
-                'artist_id' => $faker -> numberBetween(1, 10),
-                'place_id' => $faker -> numberBetween(1, 5)
+                'user_id' => $faker -> numberBetween(1, 3),
+                'artist_id' => $faker -> numberBetween(1, 3),
+                'place_id' => $faker -> numberBetween(1, 3)
             ]);
 
         }

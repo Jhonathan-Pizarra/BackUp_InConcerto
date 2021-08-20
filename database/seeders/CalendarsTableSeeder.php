@@ -19,7 +19,7 @@ class CalendarsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 8; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             Calendar::create([
                 //Atributos $fillable
