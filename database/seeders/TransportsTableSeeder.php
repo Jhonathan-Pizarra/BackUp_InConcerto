@@ -19,7 +19,7 @@ class TransportsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 4; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             Transport::create([
                 //Atributos $fillable
@@ -28,7 +28,7 @@ class TransportsTableSeeder extends Seeder
                 'instruments_capacity' => $faker -> randomFloat(2, 0, 1),
                 'disponibility' => $faker -> boolean,
                 'licence_plate' => $faker -> word,
-                'calendar_id' => $faker -> numberBetween(1,7),
+                'calendar_id' => $faker -> numberBetween(1,3),
 
             ]);
 

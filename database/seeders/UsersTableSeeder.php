@@ -34,30 +34,20 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Generar algunos usuarios para nuestra aplicacion
-        for ($i = 0; $i < 11; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $user = User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $password,
             ]);
 
-            //Un usuario puede tener 1 hospedaje,  cualquiera de esos 13 pero solo 1
+            //Un usuario puede tener 1 hospedaje,  cualquiera de esos 3 pero solo 1
             $user->lodgings()->saveMany(
                 $faker->randomElements(
                     array(
                         Lodging::find(1),
                         Lodging::find(2),
-                        Lodging::find(3),
-                        Lodging::find(4),
-                        Lodging::find(5),
-                        Lodging::find(6),
-                        Lodging::find(7),
-                        Lodging::find(8),
-                        Lodging::find(9),
-                        Lodging::find(10),
-                        Lodging::find(11),
-                        Lodging::find(12),
-                        Lodging::find(13)
+                        Lodging::find(3)
                     ), $faker->numberBetween(1, 2), false)
             );
 
@@ -68,11 +58,7 @@ class UsersTableSeeder extends Seeder
                     array(
                         Calendar::find(1),
                         Calendar::find(2),
-                        Calendar::find(3),
-                        Calendar::find(4),
-                        Calendar::find(5),
-                        Calendar::find(6),
-                        Calendar::find(7)
+                        Calendar::find(3)
                     ), $faker->numberBetween(1, 1), false)
             );
         }

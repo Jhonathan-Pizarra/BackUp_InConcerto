@@ -21,7 +21,7 @@ class ArtistsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 11; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             $artist = Artist::create([
                 //Atributos $fillable
@@ -47,17 +47,7 @@ class ArtistsTableSeeder extends Seeder
                     array(
                         Lodging::find(1),
                         Lodging::find(2),
-                        Lodging::find(3),
-                        Lodging::find(4),
-                        Lodging::find(5),
-                        Lodging::find(6),
-                        Lodging::find(7),
-                        Lodging::find(8),
-                        Lodging::find(9),
-                        Lodging::find(10),
-                        Lodging::find(11),
-                        Lodging::find(12),
-                        Lodging::find(13)
+                        Lodging::find(3)
                     ), $faker->numberBetween(1, 1), false)
             );
 
@@ -66,11 +56,7 @@ class ArtistsTableSeeder extends Seeder
                     array(
                         Calendar::find(1),
                         Calendar::find(2),
-                        Calendar::find(3),
-                        Calendar::find(4),
-                        Calendar::find(5),
-                        Calendar::find(6),
-                        Calendar::find(7)
+                        Calendar::find(3)
                     ), $faker->numberBetween(1, 1), false)
             );
         }

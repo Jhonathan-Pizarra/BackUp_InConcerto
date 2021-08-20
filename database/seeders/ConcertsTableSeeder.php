@@ -21,17 +21,18 @@ class ConcertsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             $concert = Concert::create([
                 //Atributos $fillable
-                'dateConcert' => $faker -> date('Y-m-d'), //Genra LoremIpsum para name, de tipo dateTime
+                //'dateConcert' => $faker -> date('Y-m-d'), //Genra LoremIpsum para name, de tipo dateTime
+                'dateConcert' => $faker -> dateTime, //Genra LoremIpsum para name, de tipo dateTime
                 'name' => $faker -> name,
                 'duration' => $faker ->time('H:i'),
                 'free' => $faker -> boolean,
                 'insitu' => $faker -> boolean,
-                'festival_id' => $faker -> numberBetween(1,5),
-                'place_id' => $faker -> numberBetween(1,5),
+                'festival_id' => $faker -> numberBetween(1,3),
+                'place_id' => $faker -> numberBetween(1,3),
 
             ]);
 
@@ -41,30 +42,19 @@ class ConcertsTableSeeder extends Seeder
                     array(
                         Resource::find(1),
                         Resource::find(2),
-                        Resource::find(3),
-                        Resource::find(4),
-                        Resource::find(5),
-                        Resource::find(6),
-                        Resource::find(7)
-                    ), $faker->numberBetween(1, 7), false)
+                        Resource::find(3)
+                    ), $faker->numberBetween(1, 3), false)
             );
 
 
-            //Un concierto puede tener 1 artista,  o 2.. o todos los 10
+            //Un concierto puede tener 1 artista,  o 2.. o todos los 3
             $concert->artists()->saveMany(
                 $faker->randomElements(
                     array(
                         Artist::find(1),
                         Artist::find(2),
-                        Artist::find(3),
-                        Artist::find(4),
-                        Artist::find(5),
-                        Artist::find(6),
-                        Artist::find(7),
-                        Artist::find(8),
-                        Artist::find(9),
-                        Artist::find(10)
-                    ), $faker->numberBetween(1, 10), false)
+                        Artist::find(3)
+                    ), $faker->numberBetween(1, 3), false)
             );
 
         }

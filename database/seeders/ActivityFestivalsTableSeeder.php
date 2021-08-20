@@ -18,7 +18,7 @@ class ActivityFestivalsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create(); //utilizaremos el método crear de Faker
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 3; $i++) {
             //Llamamos un método estático:
             ActivityFestival::create([
                 //Atributos $fillable
@@ -26,8 +26,8 @@ class ActivityFestivalsTableSeeder extends Seeder
                 'date' => $faker -> date('Y-m-d'),
                 'description' => $faker ->sentence,
                 'observation' => $faker -> sentence,
-                'festival_id' => $faker -> numberBetween(1, 5),
-                'user_id' => $faker -> numberBetween(1, 7),
+                'festival_id' => $faker -> numberBetween(1, 3),
+                'user_id' => $faker -> numberBetween(1, 3),
             ]);
         }
     }
