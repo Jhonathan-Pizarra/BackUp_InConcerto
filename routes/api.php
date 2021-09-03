@@ -410,9 +410,9 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     //GET
     Route::get('/resources/{resource}/concerts', [ResourceConcertController::class, 'index']);
     //GET by ID
-    //Route::get('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'show']);
+    Route::get('/resources/{resource}/concerts/{concert}', [ResourceConcertController::class, 'show']);
     //POST
-    //Route::post('/resources/{resource}/concerts', [ResourceConcertController::class, 'store']);
+    Route::post('/resources/{resource}/concerts', [ResourceConcertController::class, 'store']);
     //PUT
     //Route::put('/concerts/{concert}/resources/{resource}', [ConcertResourceController::class, 'update']);
     //DELETE
