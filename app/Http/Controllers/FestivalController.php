@@ -114,7 +114,7 @@ class FestivalController extends Controller
         $this->authorize('update', $festival);
 
         $request->validate([
-            'name' => 'string|unique:festivals|max:255', //unique:tabla
+            'name' => 'string|max:255', //unique:tabla
             'description' => 'string',
         ], self::$messages);
 
