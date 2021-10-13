@@ -1,31 +1,47 @@
-@component('mail::message')
-    # Saudos!
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inconcerto, notificación!</title>
 
-    ## Hay un nuevo festival.
+</head>
+<body>
 
-    {{$festival->text}}
-
-    ![Imagen del Festival]({{asset('storage/app/public/festivals/' . $festival->image)}} "Imagen")
-
-    @component('mail::button', ['url' => URL::to('/'), 'color'=>'success'])
-        Ver festival
-    @endcomponent
-
+    <h2>¡Hay un nuevo festival!</h2>
     @component('mail::panel')
-        This is the panel content.
+        <h1>{{$festival->name}}</h1>
     @endcomponent
 
-    @component('mail::table')
-        | Laravel       | Table         | Example  |
-        | ------------- |:-------------:| --------:|
-        | Col 2 is      | Centered      | $10      |
-        | Col 3 is      | Right-Aligned | $20      |
-    @endcomponent
+    <div class="container">
+        @yield('content')
 
-    @component('mail::subcopy')
-        This is the subcopy content.
-    @endcomponent
+        @component('mail::message')
+            <img src='https://res.cloudinary.com/inconcerto/image/upload/{{$festival->image}}' alt="festival">
+            <b>Descripción:</b> {{$festival->description}}
+            @component('mail::button', ['url' => URL::to('http://inconcerto.vercel.app/festivales/'.$festival->id), 'color'=>'success'])
+                Ver festival
+            @endcomponent
+        @endcomponent
+    </div>
 
-    Gracias Totales,<br>
-    {{ config('app.name') }}
-@endcomponent
+{{--
+    <div>
+        --}}
+{{--<img src="{{ asset('https://res.cloudinary.com/inconcerto/image/upload/v1634065479/lcjtxz0bdbwcvz4ucxzw.png') }}" alt="festival">--}}{{--
+
+        --}}
+{{--<img src="{{ URL::to('https://res.cloudinary.com/inconcerto/image/upload/v1634065479/lcjtxz0bdbwcvz4ucxzw.png') }}">--}}{{--
+
+        <img src='https://res.cloudinary.com/inconcerto/image/upload/{{$festival->image}}' alt="festival">
+        <div>
+            <p>Descripción: {{$festival->description}}</p>
+        </div>
+    </div>
+--}}
+
+        {{--<a href="http://inconcerto.vercel.app/festivales/{{$festival->id}}" class="btn btn-primary">Ver el festival</a>--}}
+
+</body>
+</html>
