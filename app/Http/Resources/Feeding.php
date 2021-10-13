@@ -24,6 +24,7 @@ class Feeding extends JsonResource
             //festival'=>"/festivales/".$this->festival_id,
             'user' => $this -> user->name,
             'artist' => $this -> artist->name,
+            'artistLst' => $this -> artist->lastName,
             'fplace' => FeedingPlace::find($this->place_id)->name,
             //'fplace' =>  $this->place_id,
             'user_id' => "/usuarios/".$this -> user_id,

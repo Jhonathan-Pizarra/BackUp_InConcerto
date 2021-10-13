@@ -101,22 +101,23 @@ class UserController extends Controller
             'password' => Hash::make($request->get('password')),
             'role' => $request->get('role'),
         ]);
-
-        $token = JWTAuth::fromUser($user);
-        return response()->json(compact('user', 'token'), 201)
-            // for httpOnly cookie
-            ->withCookie(
-                'token',
-                $token,
-                //auth()->getToken()->get(),
-                config('jwt.ttl'),
-                '/',
-                null,
-                config('app.env') !== 'local',
-                true, //httpPnly
-                false,
-                config('app.env') !== 'local' ? 'None':'Lax' //SameSite
-            );
+        
+        return response()->json($user, 201);
+    //        $token = JWTAuth::fromUser($user);
+    //        return response()->json(compact('user', 'token'), 201)
+    //            // for httpOnly cookie
+    //            ->withCookie(
+    //                'token',
+    //                $token,
+    //                //auth()->getToken()->get(),
+    //                config('jwt.ttl'),
+    //                '/',
+    //                null,
+    //                config('app.env') !== 'local',
+    //                true, //httpPnly
+    //                false,
+    //                config('app.env') !== 'local' ? 'None':'Lax' //SameSite
+    //            );
     }
 
     //Usuario no autenticado
