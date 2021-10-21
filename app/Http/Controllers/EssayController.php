@@ -31,7 +31,7 @@ class EssayController extends Controller
 
         $request->validate([
             'dateEssay' => 'required|date',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:essays',
             'place' => 'required|string|max:255',
             'festival_id' => 'required|exists:festivals,id', //No disponible hasta que se fusione con la rama de relacion
         ], self::$messages);
