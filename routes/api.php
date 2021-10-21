@@ -1,6 +1,8 @@
 <?php
 
 //Controladores, rutas anidadas
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\PasswordResetRequestController;
 use App\Http\Controllers\UserActivityController;
 use App\Http\Controllers\UserCalendarController;
 use App\Http\Controllers\UserFeedingController;
@@ -56,6 +58,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [UserController::class,'authenticate']);
 //Route::get('/festivals', [FestivalController::class, 'index']);
 //Route::get('/concerts', [ConcertController::class, 'index']);
+
+//Olvidé mi contraseña
+Route::post('/forgot-password', [PasswordResetRequestController::class, 'sendEmail']);
+Route::post('/reset-password', [ChangePasswordController::class, 'passwordResetProcess']);
 
 //Rutas protegidas o privadas
 Route::group(['middleware' => ['jwt.verify']], function () {
