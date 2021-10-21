@@ -33,7 +33,7 @@ class FeedingPlaceController extends Controller
         $this->authorize('create', FeedingPlace::class);
 
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:feeding_places',
             'address' => 'required|string|unique:feeding_places|max:255',
             'permit' => 'required|boolean',
             'aforo' => 'required|integer',

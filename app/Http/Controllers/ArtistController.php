@@ -63,7 +63,7 @@ class ArtistController extends Controller
         $this->authorize('update', $artist);
 
         $request->validate([
-            'ciOrPassport' => 'string|max:15',
+            'ciOrPassport' => 'string|max:15', //No lo hago unique porque se compara consigo mismo...
             'artisticOrGroupName' => 'string|max:255',
             'name' => 'string|max:255',
             'lastName' => 'string|max:255',
